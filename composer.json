@@ -2,6 +2,7 @@
     "name": "exeque/fluent-assert",
     "description": "Fluent interface for Webmozart Assert",
     "type": "library",
+    "minimum-stability": "stable",
     "require": {
         "php": "^8.2",
         "webmozart/assert": "^1.11",
@@ -35,6 +36,14 @@
             "pestphp/pest-plugin": true
         }
     },
+    "keywords": [
+        "assert",
+        "fluent",
+        "webmozart",
+        "php",
+        "assertion",
+        "validation"
+    ],
     "scripts": {
         "test": "vendor/bin/pest",
         "lint": "vendor/bin/pint",
