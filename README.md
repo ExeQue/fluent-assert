@@ -54,7 +54,7 @@ $assert
 $value = $assert->value(); // 'foo bar'
 ```
 
-The [example](https://github.com/webmozarts/assert#example) from `webmozart/assert` and be rewritten as:
+The [example](https://github.com/webmozarts/assert#example) from `webmozart/assert` can be rewritten as:
 
 ```php
 use Exeque\FluentAssert\Assert;
