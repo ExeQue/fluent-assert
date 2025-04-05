@@ -20,10 +20,10 @@ it('calls callback on the element at index', function () {
 it('fails if the index does not exist', function () {
     $assert = Assert::for(['a', 'b', 'c']);
 
-    expect(fn() => $assert->at(2, fn() => ''))->not->toThrow(InvalidArgumentException::class)
-        ->and(fn() => $assert->at(3, fn() => ''))->toThrow(InvalidArgumentException::class);
+    expect(fn () => $assert->at(2, fn () => ''))->not->toThrow(InvalidArgumentException::class)
+        ->and(fn () => $assert->at(3, fn () => ''))->toThrow(InvalidArgumentException::class);
 
     $assert = Assert::for(['a' => 'a', 'b' => 'b', 'c' => 'c']);
-    expect(fn() => $assert->at('c', fn() => ''))->not->toThrow(InvalidArgumentException::class)
-        ->and(fn() => $assert->at('d', fn() => ''))->toThrow(InvalidArgumentException::class);
+    expect(fn () => $assert->at('c', fn () => ''))->not->toThrow(InvalidArgumentException::class)
+        ->and(fn () => $assert->at('d', fn () => ''))->toThrow(InvalidArgumentException::class);
 });

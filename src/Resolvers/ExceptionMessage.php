@@ -32,7 +32,7 @@ class ExceptionMessage
             array_keys($exceptions),
         );
 
-        if(count($messages) === 1) {
+        if (count($messages) === 1) {
             return array_shift($messages);
         }
 
@@ -57,7 +57,7 @@ class ExceptionMessage
 
         $message = preg_replace('/\. Got: (.+)$/', ' (Got: $1)', $message);
 
-        if($position === 'last' && $lastChar !== '.') {
+        if ($position === 'last' && $lastChar !== '.') {
             $message .= '.';
         }
 

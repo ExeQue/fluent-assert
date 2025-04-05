@@ -22,7 +22,7 @@ it('calls callback on each element', function () {
 it('throws an exception if given a non-iterable', function () {
     $assert = Assert::for('not iterable');
 
-    expect(fn() => $assert->each(fn() => ''))->toThrow(InvalidArgumentException::class);
+    expect(fn () => $assert->each(fn () => ''))->toThrow(InvalidArgumentException::class);
 });
 
 test('exception message starts with index of the first failure', function () {
@@ -30,7 +30,7 @@ test('exception message starts with index of the first failure', function () {
 
     try {
         $assert->each(
-            fn(Assert $assert) => $assert->eq('a')
+            fn (Assert $assert) => $assert->eq('a')
         );
     } catch (InvalidArgumentException $exception) {
         expect($exception->getPrevious())->toBeInstanceOf(InvalidArgumentException::class)

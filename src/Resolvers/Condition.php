@@ -31,12 +31,12 @@ readonly class Condition
             try {
                 $result = ($this->condition)($assert);
 
-                if($result === $assert) {
+                if ($result === $assert) {
                     if ($assert->wasUsed()) {
                         return true;
                     }
 
-                    if($assert->wasUsed() === false) {
+                    if ($assert->wasUsed() === false) {
                         return false;
                     }
                 }

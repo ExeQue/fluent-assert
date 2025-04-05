@@ -57,7 +57,7 @@ class Base extends WebmozartAssert
      */
     public static function type(mixed $value, string $type, string $message = ''): void
     {
-        if($type === 'resource' && is_resource($value)) {
+        if ($type === 'resource' && is_resource($value)) {
             return;
         }
 
