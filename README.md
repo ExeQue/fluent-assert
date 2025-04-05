@@ -29,7 +29,7 @@ There are a few differences between this library and `webmozart/assert`:
     - It extends `\ExeQue\FluentAssert\Exceptions\InvalidArgumentException`.
     - It provides multiple exceptions in the `getExceptions()` method.
     - See [Grouped Assertions](#grouped-assertions).
-  - `\ExeQue\FluentAssert\Exceptions\IndexedInvalidArgumentException` is thrown on grouped assertions
+  - `\ExeQue\FluentAssert\Exceptions\IndexedInvalidArgumentException` is thrown on positional or iterative assertions
     - It extends `\ExeQue\FluentAssert\Exceptions\InvalidArgumentException`.
     - It provides the index of the failing assertion in the `getIndex()` method.
     - It provides the original message in the `getOriginalMessage()` method.
@@ -218,6 +218,21 @@ $assert->when(
 
 
 
+```
+
+### Inverted Assertions
+
+The `not()` method allows you to invert the assertion. This is useful when the assertions MUST fail.
+
+```php
+use Exeque\FluentAssert\Assert;
+
+$assert = Assert::for([1, 2, 3, 4]);
+
+$assert->not(
+    fn (Assert $assert) => $assert->arrayContains(3),
+    'Input cannot contain the number 3'
+);
 ```
 
 ## Assertions
