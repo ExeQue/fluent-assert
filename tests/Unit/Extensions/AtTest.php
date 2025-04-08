@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use ExeQue\FluentAssert\Assert;
+use ExeQue\FluentAssert\Exceptions\InvalidArgumentException;
 
 it('calls callback on the element at index', function () {
     $assert = Assert::for(['a', 'b', 'c']);
@@ -41,4 +42,26 @@ it('can use a callable to extract the value to assert on', function () {
         fn(array $input) => $input[1],
         fn(Assert $assert) => expect($assert->value())->toBe($expected)
     );
+});
+
+it('can reference object properties', function() {
+    $object = new class {
+        public string $name = 'John Doe';
+    };
+
+    $assert = Assert::for($object);
+
+    $assert->at('name', function (Assert $item, string $key) use ($object) {
+        expect($item->value())->toBe($object->name)->and($key)->toBe('name');
+    });
+
+    expect(function() {
+        $object = new class {
+            private string $name = 'John Doe';
+        };
+
+        $assert = Assert::for($object);
+
+        $assert->at('name', fn() => '');
+    })->toThrow(InvalidArgumentException::class);
 });

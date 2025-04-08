@@ -39,7 +39,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrAlnum($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::alnum($this->value, ...func_get_args());
 
         return $this;
     }
@@ -103,7 +107,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrAlpha($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::alpha($this->value, ...func_get_args());
 
         return $this;
     }
@@ -169,7 +177,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrArrayContains($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::arrayContains($this->value, ...func_get_args());
 
         return $this;
     }
@@ -235,7 +247,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrBoolean($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::boolean($this->value, ...func_get_args());
 
         return $this;
     }
@@ -299,7 +315,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrClassExists($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::classExists($this->value, ...func_get_args());
 
         return $this;
     }
@@ -365,7 +385,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrContains($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::contains($this->value, ...func_get_args());
 
         return $this;
     }
@@ -433,7 +457,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrCount($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::count($this->value, ...func_get_args());
 
         return $this;
     }
@@ -503,7 +531,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrCountBetween($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::countBetween($this->value, ...func_get_args());
 
         return $this;
     }
@@ -571,7 +603,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrDigits($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::digits($this->value, ...func_get_args());
 
         return $this;
     }
@@ -635,7 +671,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrDirectory($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::directory($this->value, ...func_get_args());
 
         return $this;
     }
@@ -699,7 +739,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrEmail($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::email($this->value, ...func_get_args());
 
         return $this;
     }
@@ -765,7 +809,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrEndsWith($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::endsWith($this->value, ...func_get_args());
 
         return $this;
     }
@@ -833,7 +881,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrEq($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::eq($this->value, ...func_get_args());
 
         return $this;
     }
@@ -899,7 +951,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrFalse($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::false($this->value, ...func_get_args());
 
         return $this;
     }
@@ -963,7 +1019,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrFile($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::file($this->value, ...func_get_args());
 
         return $this;
     }
@@ -1027,7 +1087,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrFileExists($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::fileExists($this->value, ...func_get_args());
 
         return $this;
     }
@@ -1091,7 +1155,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrFloat($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::float($this->value, ...func_get_args());
 
         return $this;
     }
@@ -1157,7 +1225,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrGreaterThan($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::greaterThan($this->value, ...func_get_args());
 
         return $this;
     }
@@ -1225,7 +1297,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrGreaterThanEq($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::greaterThanEq($this->value, ...func_get_args());
 
         return $this;
     }
@@ -1291,7 +1367,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrHasIndices($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::hasIndices($this->value, ...func_get_args());
 
         return $this;
     }
@@ -1357,7 +1437,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrImplementsInterface($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::implementsInterface($this->value, ...func_get_args());
 
         return $this;
     }
@@ -1425,7 +1509,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrInArray($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::inArray($this->value, ...func_get_args());
 
         return $this;
     }
@@ -1466,6 +1554,78 @@ trait Mixin
 
     // endregion [ Base::inArray ]
 
+    // region [ Base::instancedPropertyExists ]
+
+    /**
+     * @param string $name
+     * @param string $message
+     *
+     * @see Base::instancedPropertyExists
+     */
+    public function instancedPropertyExists($name, $message = ''): static
+    {
+        $this->used = true;
+
+        Base::instancedPropertyExists($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @param string $message
+     *
+     * @see Base::nullOrInstancedPropertyExists
+     */
+    public function nullOrInstancedPropertyExists($name, $message = ''): static
+    {
+        $this->used = true;
+
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::instancedPropertyExists($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @param string $message
+     *
+     * @see Base::allInstancedPropertyExists
+     */
+    public function allInstancedPropertyExists($name, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->instancedPropertyExists(...$args)
+        );
+    }
+
+    /**
+     * @param string $name
+     * @param string $message
+     *
+     * @see Base::allNullOrInstancedPropertyExists
+     */
+    public function allNullOrInstancedPropertyExists($name, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->nullOrInstancedPropertyExists(...$args)
+        );
+    }
+
+    // endregion [ Base::instancedPropertyExists ]
+
     // region [ Base::integer ]
 
     /**
@@ -1491,7 +1651,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrInteger($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::integer($this->value, ...func_get_args());
 
         return $this;
     }
@@ -1555,7 +1719,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrIntegerish($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::integerish($this->value, ...func_get_args());
 
         return $this;
     }
@@ -1619,7 +1787,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrInterfaceExists($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::interfaceExists($this->value, ...func_get_args());
 
         return $this;
     }
@@ -1683,7 +1855,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrIp($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::ip($this->value, ...func_get_args());
 
         return $this;
     }
@@ -1747,7 +1923,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrIpv4($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::ipv4($this->value, ...func_get_args());
 
         return $this;
     }
@@ -1811,7 +1991,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrIpv6($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::ipv6($this->value, ...func_get_args());
 
         return $this;
     }
@@ -1877,7 +2061,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrIsAOf($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::isAOf($this->value, ...func_get_args());
 
         return $this;
     }
@@ -1945,7 +2133,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrIsAnyOf($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::isAnyOf($this->value, ...func_get_args());
 
         return $this;
     }
@@ -2011,7 +2203,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrIsArray($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::isArray($this->value, ...func_get_args());
 
         return $this;
     }
@@ -2075,7 +2271,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrIsArrayAccessible($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::isArrayAccessible($this->value, ...func_get_args());
 
         return $this;
     }
@@ -2139,7 +2339,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrIsCallable($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::isCallable($this->value, ...func_get_args());
 
         return $this;
     }
@@ -2203,7 +2407,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrIsCountable($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::isCountable($this->value, ...func_get_args());
 
         return $this;
     }
@@ -2267,7 +2475,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrIsEmpty($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::isEmpty($this->value, ...func_get_args());
 
         return $this;
     }
@@ -2333,7 +2545,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrIsInstanceOf($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::isInstanceOf($this->value, ...func_get_args());
 
         return $this;
     }
@@ -2401,7 +2617,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrIsInstanceOfAny($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::isInstanceOfAny($this->value, ...func_get_args());
 
         return $this;
     }
@@ -2467,7 +2687,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrIsIterable($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::isIterable($this->value, ...func_get_args());
 
         return $this;
     }
@@ -2531,7 +2755,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrIsList($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::isList($this->value, ...func_get_args());
 
         return $this;
     }
@@ -2595,7 +2823,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrIsMap($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::isMap($this->value, ...func_get_args());
 
         return $this;
     }
@@ -2659,7 +2891,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrIsNonEmptyList($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::isNonEmptyList($this->value, ...func_get_args());
 
         return $this;
     }
@@ -2723,7 +2959,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrIsNonEmptyMap($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::isNonEmptyMap($this->value, ...func_get_args());
 
         return $this;
     }
@@ -2789,7 +3029,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrIsNotA($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::isNotA($this->value, ...func_get_args());
 
         return $this;
     }
@@ -2857,7 +3101,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrKeyExists($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::keyExists($this->value, ...func_get_args());
 
         return $this;
     }
@@ -2925,7 +3173,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrKeyNotExists($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::keyNotExists($this->value, ...func_get_args());
 
         return $this;
     }
@@ -2993,7 +3245,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrLength($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::length($this->value, ...func_get_args());
 
         return $this;
     }
@@ -3063,7 +3319,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrLengthBetween($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::lengthBetween($this->value, ...func_get_args());
 
         return $this;
     }
@@ -3133,7 +3393,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrLessThan($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::lessThan($this->value, ...func_get_args());
 
         return $this;
     }
@@ -3201,7 +3465,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrLessThanEq($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::lessThanEq($this->value, ...func_get_args());
 
         return $this;
     }
@@ -3267,7 +3535,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrLower($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::lower($this->value, ...func_get_args());
 
         return $this;
     }
@@ -3333,7 +3605,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrMaxCount($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::maxCount($this->value, ...func_get_args());
 
         return $this;
     }
@@ -3401,7 +3677,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrMaxLength($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::maxLength($this->value, ...func_get_args());
 
         return $this;
     }
@@ -3469,7 +3749,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrMethodExists($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::methodExists($this->value, ...func_get_args());
 
         return $this;
     }
@@ -3537,7 +3821,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrMethodNotExists($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::methodNotExists($this->value, ...func_get_args());
 
         return $this;
     }
@@ -3605,7 +3893,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrMinCount($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::minCount($this->value, ...func_get_args());
 
         return $this;
     }
@@ -3673,7 +3965,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrMinLength($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::minLength($this->value, ...func_get_args());
 
         return $this;
     }
@@ -3739,7 +4035,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrNatural($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::natural($this->value, ...func_get_args());
 
         return $this;
     }
@@ -3805,7 +4105,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrNotContains($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::notContains($this->value, ...func_get_args());
 
         return $this;
     }
@@ -3871,7 +4175,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrNotEmpty($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::notEmpty($this->value, ...func_get_args());
 
         return $this;
     }
@@ -3937,7 +4245,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrNotEndsWith($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::notEndsWith($this->value, ...func_get_args());
 
         return $this;
     }
@@ -4005,7 +4317,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrNotEq($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::notEq($this->value, ...func_get_args());
 
         return $this;
     }
@@ -4071,7 +4387,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrNotFalse($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::notFalse($this->value, ...func_get_args());
 
         return $this;
     }
@@ -4137,7 +4457,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrNotInstanceOf($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::notInstanceOf($this->value, ...func_get_args());
 
         return $this;
     }
@@ -4203,7 +4527,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrNotNull($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::notNull($this->value, ...func_get_args());
 
         return $this;
     }
@@ -4269,7 +4597,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrNotRegex($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::notRegex($this->value, ...func_get_args());
 
         return $this;
     }
@@ -4337,7 +4669,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrNotSame($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::notSame($this->value, ...func_get_args());
 
         return $this;
     }
@@ -4405,7 +4741,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrNotStartsWith($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::notStartsWith($this->value, ...func_get_args());
 
         return $this;
     }
@@ -4471,7 +4811,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrNotWhitespaceOnly($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::notWhitespaceOnly($this->value, ...func_get_args());
 
         return $this;
     }
@@ -4569,7 +4913,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrNumeric($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::numeric($this->value, ...func_get_args());
 
         return $this;
     }
@@ -4633,7 +4981,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrObject($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::object($this->value, ...func_get_args());
 
         return $this;
     }
@@ -4699,7 +5051,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrOneOf($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::oneOf($this->value, ...func_get_args());
 
         return $this;
     }
@@ -4765,7 +5121,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrPositiveInteger($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::positiveInteger($this->value, ...func_get_args());
 
         return $this;
     }
@@ -4804,6 +5164,78 @@ trait Mixin
 
     // endregion [ Base::positiveInteger ]
 
+    // region [ Base::privatePropertyExists ]
+
+    /**
+     * @param string $name
+     * @param string $message
+     *
+     * @see Base::privatePropertyExists
+     */
+    public function privatePropertyExists($name, $message = ''): static
+    {
+        $this->used = true;
+
+        Base::privatePropertyExists($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @param string $message
+     *
+     * @see Base::nullOrPrivatePropertyExists
+     */
+    public function nullOrPrivatePropertyExists($name, $message = ''): static
+    {
+        $this->used = true;
+
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::privatePropertyExists($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @param string $message
+     *
+     * @see Base::allPrivatePropertyExists
+     */
+    public function allPrivatePropertyExists($name, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->privatePropertyExists(...$args)
+        );
+    }
+
+    /**
+     * @param string $name
+     * @param string $message
+     *
+     * @see Base::allNullOrPrivatePropertyExists
+     */
+    public function allNullOrPrivatePropertyExists($name, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->nullOrPrivatePropertyExists(...$args)
+        );
+    }
+
+    // endregion [ Base::privatePropertyExists ]
+
     // region [ Base::propertyExists ]
 
     /**
@@ -4831,7 +5263,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrPropertyExists($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::propertyExists($this->value, ...func_get_args());
 
         return $this;
     }
@@ -4899,7 +5335,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrPropertyNotExists($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::propertyNotExists($this->value, ...func_get_args());
 
         return $this;
     }
@@ -4940,6 +5380,150 @@ trait Mixin
 
     // endregion [ Base::propertyNotExists ]
 
+    // region [ Base::protectedPropertyExists ]
+
+    /**
+     * @param string $name
+     * @param string $message
+     *
+     * @see Base::protectedPropertyExists
+     */
+    public function protectedPropertyExists($name, $message = ''): static
+    {
+        $this->used = true;
+
+        Base::protectedPropertyExists($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @param string $message
+     *
+     * @see Base::nullOrProtectedPropertyExists
+     */
+    public function nullOrProtectedPropertyExists($name, $message = ''): static
+    {
+        $this->used = true;
+
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::protectedPropertyExists($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @param string $message
+     *
+     * @see Base::allProtectedPropertyExists
+     */
+    public function allProtectedPropertyExists($name, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->protectedPropertyExists(...$args)
+        );
+    }
+
+    /**
+     * @param string $name
+     * @param string $message
+     *
+     * @see Base::allNullOrProtectedPropertyExists
+     */
+    public function allNullOrProtectedPropertyExists($name, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->nullOrProtectedPropertyExists(...$args)
+        );
+    }
+
+    // endregion [ Base::protectedPropertyExists ]
+
+    // region [ Base::publicPropertyExists ]
+
+    /**
+     * @param string $name
+     * @param string $message
+     *
+     * @see Base::publicPropertyExists
+     */
+    public function publicPropertyExists($name, $message = ''): static
+    {
+        $this->used = true;
+
+        Base::publicPropertyExists($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @param string $message
+     *
+     * @see Base::nullOrPublicPropertyExists
+     */
+    public function nullOrPublicPropertyExists($name, $message = ''): static
+    {
+        $this->used = true;
+
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::publicPropertyExists($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @param string $message
+     *
+     * @see Base::allPublicPropertyExists
+     */
+    public function allPublicPropertyExists($name, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->publicPropertyExists(...$args)
+        );
+    }
+
+    /**
+     * @param string $name
+     * @param string $message
+     *
+     * @see Base::allNullOrPublicPropertyExists
+     */
+    public function allNullOrPublicPropertyExists($name, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->nullOrPublicPropertyExists(...$args)
+        );
+    }
+
+    // endregion [ Base::publicPropertyExists ]
+
     // region [ Base::range ]
 
     /**
@@ -4969,7 +5553,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrRange($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::range($this->value, ...func_get_args());
 
         return $this;
     }
@@ -5037,7 +5625,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrReadable($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::readable($this->value, ...func_get_args());
 
         return $this;
     }
@@ -5103,7 +5695,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrRegex($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::regex($this->value, ...func_get_args());
 
         return $this;
     }
@@ -5171,7 +5767,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrResource($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::resource($this->value, ...func_get_args());
 
         return $this;
     }
@@ -5239,7 +5839,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrSame($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::same($this->value, ...func_get_args());
 
         return $this;
     }
@@ -5305,7 +5909,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrScalar($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::scalar($this->value, ...func_get_args());
 
         return $this;
     }
@@ -5371,7 +5979,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrStartsWith($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::startsWith($this->value, ...func_get_args());
 
         return $this;
     }
@@ -5437,7 +6049,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrStartsWithLetter($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::startsWithLetter($this->value, ...func_get_args());
 
         return $this;
     }
@@ -5476,6 +6092,78 @@ trait Mixin
 
     // endregion [ Base::startsWithLetter ]
 
+    // region [ Base::staticPropertyExists ]
+
+    /**
+     * @param string $name
+     * @param string $message
+     *
+     * @see Base::staticPropertyExists
+     */
+    public function staticPropertyExists($name, $message = ''): static
+    {
+        $this->used = true;
+
+        Base::staticPropertyExists($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @param string $message
+     *
+     * @see Base::nullOrStaticPropertyExists
+     */
+    public function nullOrStaticPropertyExists($name, $message = ''): static
+    {
+        $this->used = true;
+
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::staticPropertyExists($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @param string $message
+     *
+     * @see Base::allStaticPropertyExists
+     */
+    public function allStaticPropertyExists($name, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->staticPropertyExists(...$args)
+        );
+    }
+
+    /**
+     * @param string $name
+     * @param string $message
+     *
+     * @see Base::allNullOrStaticPropertyExists
+     */
+    public function allNullOrStaticPropertyExists($name, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->nullOrStaticPropertyExists(...$args)
+        );
+    }
+
+    // endregion [ Base::staticPropertyExists ]
+
     // region [ Base::string ]
 
     /**
@@ -5501,7 +6189,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrString($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::string($this->value, ...func_get_args());
 
         return $this;
     }
@@ -5565,7 +6257,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrStringNotEmpty($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::stringNotEmpty($this->value, ...func_get_args());
 
         return $this;
     }
@@ -5631,7 +6327,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrSubclassOf($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::subclassOf($this->value, ...func_get_args());
 
         return $this;
     }
@@ -5699,7 +6399,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrThrows($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::throws($this->value, ...func_get_args());
 
         return $this;
     }
@@ -5765,7 +6469,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrTrue($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::true($this->value, ...func_get_args());
 
         return $this;
     }
@@ -5831,7 +6539,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrType($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::type($this->value, ...func_get_args());
 
         return $this;
     }
@@ -5897,7 +6609,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrUnicodeLetters($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::unicodeLetters($this->value, ...func_get_args());
 
         return $this;
     }
@@ -5961,7 +6677,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrUniqueValues($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::uniqueValues($this->value, ...func_get_args());
 
         return $this;
     }
@@ -6025,7 +6745,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrUpper($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::upper($this->value, ...func_get_args());
 
         return $this;
     }
@@ -6089,7 +6813,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrUuid($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::uuid($this->value, ...func_get_args());
 
         return $this;
     }
@@ -6153,7 +6881,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrValidArrayKey($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::validArrayKey($this->value, ...func_get_args());
 
         return $this;
     }
@@ -6217,7 +6949,11 @@ trait Mixin
     {
         $this->used = true;
 
-        Base::nullOrWritable($this->value, ...func_get_args());
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::writable($this->value, ...func_get_args());
 
         return $this;
     }

@@ -6,6 +6,8 @@ namespace ExeQue\FluentAssert;
 
 use ArrayAccess;
 use ExeQue\FluentAssert\Exceptions\InvalidArgumentException;
+use ReflectionClass;
+use ReflectionProperty;
 use Webmozart\Assert\Assert as WebmozartAssert;
 
 /**
@@ -70,5 +72,112 @@ class Base extends WebmozartAssert
                 ),
             );
         }
+    }
+
+    private static function propertyAssert($value, string $name, string $message, callable $callback): void
+    {
+        self::propertyExists($value, $name, $message);
+
+        $callback((new ReflectionClass($value))->getProperty($name));
+    }
+
+    /**
+     * @param string|object $value
+     * @param string $name
+     * @param string $message
+     */
+    public static function publicPropertyExists($value, string $name, string $message = ''): void
+    {
+        self::propertyAssert($value, $name, $message, function (ReflectionProperty $property) {
+            if ($property->isPublic() === false) {
+                static::reportInvalidArgument(
+                    sprintf(
+                        'Expected public property %s on %s.',
+                        $property->getName(),
+                        $property->getDeclaringClass()->getName(),
+                    ),
+                );
+            }
+        });
+    }
+
+    /**
+     * @param string|object $value
+     * @param string $name
+     * @param string $message
+     */
+    public static function protectedPropertyExists($value, string $name, string $message = ''): void
+    {
+        self::propertyAssert($value, $name, $message, function (ReflectionProperty $property) {
+            if ($property->isProtected() === false) {
+                static::reportInvalidArgument(
+                    sprintf(
+                        'Expected protected property %s on %s.',
+                        $property->getName(),
+                        $property->getDeclaringClass()->getName(),
+                    ),
+                );
+            }
+        });
+    }
+
+    /**
+     * @param string|object $value
+     * @param string $name
+     * @param string $message
+     */
+    public static function privatePropertyExists($value, string $name, string $message = ''): void
+    {
+        self::propertyAssert($value, $name, $message, function (ReflectionProperty $property) {
+            if ($property->isPrivate() === false) {
+                static::reportInvalidArgument(
+                    sprintf(
+                        'Expected private property %s on %s.',
+                        $property->getName(),
+                        $property->getDeclaringClass()->getName(),
+                    ),
+                );
+            }
+        });
+    }
+
+    /**
+     * @param string|object $value
+     * @param string $name
+     * @param string $message
+     */
+    public static function staticPropertyExists($value, string $name, string $message = ''): void
+    {
+        self::propertyAssert($value, $name, $message, function (ReflectionProperty $property) {
+            if ($property->isStatic() === false) {
+                static::reportInvalidArgument(
+                    sprintf(
+                        'Expected static property %s on %s.',
+                        $property->getName(),
+                        $property->getDeclaringClass()->getName(),
+                    ),
+                );
+            }
+        });
+    }
+
+    /**
+     * @param string|object $value
+     * @param string $name
+     * @param string $message
+     */
+    public static function instancedPropertyExists($value, string $name, string $message = ''): void
+    {
+        self::propertyAssert($value, $name, $message, function (ReflectionProperty $property) {
+            if ($property->isStatic()) {
+                static::reportInvalidArgument(
+                    sprintf(
+                        'Expected instanced property %s on %s.',
+                        $property->getName(),
+                        $property->getDeclaringClass()->getName(),
+                    ),
+                );
+            }
+        });
     }
 }

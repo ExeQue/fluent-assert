@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace ExeQue\FluentAssert;
 
+use ArrayAccess;
 use ExeQue\FluentAssert\Concerns\Mixin;
 use ExeQue\FluentAssert\Exceptions\BulkInvalidArgumentException;
 use ExeQue\FluentAssert\Exceptions\IndexedInvalidArgumentException;
@@ -79,13 +80,20 @@ class Assert
 
         try {
             if (is_string($index) || is_int($index)) {
-                $this->keyExists($index, $message);
-                $value = $this->value[$index];
+                if(is_array($this->value) || $this->value instanceof ArrayAccess) {
+                    $this->keyExists($index, $message);
+                    $value = $this->value[$index];
+                } else {
+                    $this->publicPropertyExists($index, $message);
+                    $value = $this->value->{$index};
+                }
+
+                $callback(self::for($value), $index);
             } else {
                 $value = $index($this->value);
-            }
 
-            $callback(self::for($value), $index);
+                $callback(self::for($value));
+            }
         } catch (InvalidArgumentException $exception) {
             throw new IndexedInvalidArgumentException(
                 index: $index,

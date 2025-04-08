@@ -230,7 +230,24 @@ PHP;
     {
         $fullname = 'nullOr' . ucfirst($name);
 
-        return $this->getBaseFunctionContent($fullname, $parameters);
+        $docComment = $this->makeDocComment($fullname, $parameters);
+
+        $code = <<<PHP
+            public function $fullname%SIGNATURE%: static
+            {
+                \$this->used = true;
+
+                if (\$this->value === null) {
+                    return \$this;
+                }
+
+                Base::{$name}(\$this->value, ...func_get_args());
+
+                return \$this;
+            }
+        PHP;
+
+        return "$docComment\n" . dedent($code);
     }
 
     private function getAllFunctionContent(string $name, array $parameters): string
