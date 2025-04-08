@@ -72,28 +72,29 @@ class Assert
     }
 
     /**
-     * @param callable(Assert, string|int): void $callback
+     * @param callable(Assert, string|int|null): void $callback
      */
     public function at(string|int|callable $index, callable $callback, string $message = ''): static
     {
         $this->used = true;
 
-        try {
-            if (is_string($index) || is_int($index)) {
-                if (is_array($this->value) || $this->value instanceof ArrayAccess) {
-                    $this->keyExists($index, $message);
-                    $value = $this->value[$index];
-                } else {
-                    $this->publicPropertyExists($index, $message);
-                    $value = $this->value->{$index};
-                }
-
-                $callback(self::for($value), $index);
+        $usingCallable = false;
+        if (is_string($index) || is_int($index)) {
+            if (is_array($this->value) || $this->value instanceof ArrayAccess) {
+                $this->keyExists($index, $message);
+                $value = $this->value[$index];
             } else {
-                $value = $index($this->value);
-
-                $callback(self::for($value));
+                $this->publicPropertyExists($index, $message);
+                $value = $this->value->{$index};
             }
+
+            $assert = self::for($value);
+        } else {
+            $assert = self::for($index($this->value));
+            $usingCallable = true;
+        }
+        try {
+            $callback($assert, $usingCallable === false ? $index : null);
         } catch (InvalidArgumentException $exception) {
             throw new IndexedInvalidArgumentException(
                 index: $index,
