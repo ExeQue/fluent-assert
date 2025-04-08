@@ -1,6 +1,7 @@
 # Fluent Assert
 
-This library is built upon [`webmozart/assert`](https://github.com/webmozarts/assert) and provides a fluent interface for assertions, which allows for a more compact
+This library is built upon [`webmozart/assert`](https://github.com/webmozarts/assert) and provides a fluent interface
+for assertions, which allows for a more compact
 set of assertions on the same value.
 
 It is a useful tool for those who want to use `webmozart/assert` but prefer a more fluent interface.
@@ -20,21 +21,20 @@ composer require exeque/fluent-assert
 There are a few differences between this library and `webmozart/assert`:
 
 - The `all*` methods don't use the source methods in `webmozart/assert`.
-  - They work as you would expect, but they use `each()` internally to
-    apply the assertions to each value. See [Iterative Assertions](#iterative-assertions).
+    - They work as you would expect, but they use `each()` internally to
+      apply the assertions to each value. See [Iterative Assertions](#iterative-assertions).
 - The exception throw on failures are different.
-  - `\ExeQue\FluentAssert\Exceptions\InvalidArgumentException` is thrown on failures.
-    - It extends `\Webmozart\Assert\InvalidArgumentException`.
-  - `\ExeQue\FluentAssert\Exceptions\BulkInvalidArgumentException` is thrown on grouped assertions
-    - It extends `\ExeQue\FluentAssert\Exceptions\InvalidArgumentException`.
-    - It provides multiple exceptions in the `getExceptions()` method.
-    - See [Grouped Assertions](#grouped-assertions).
-  - `\ExeQue\FluentAssert\Exceptions\IndexedInvalidArgumentException` is thrown on positional or iterative assertions
-    - It extends `\ExeQue\FluentAssert\Exceptions\InvalidArgumentException`.
-    - It provides the index of the failing assertion in the `getIndex()` method.
-    - It provides the original message in the `getOriginalMessage()` method.
-    - See [Positional Assertions](#positional-assertions) or [Iterative Assertions](#iterative-assertions).
-
+    - `\ExeQue\FluentAssert\Exceptions\InvalidArgumentException` is thrown on failures.
+        - It extends `\Webmozart\Assert\InvalidArgumentException`.
+    - `\ExeQue\FluentAssert\Exceptions\BulkInvalidArgumentException` is thrown on grouped assertions
+        - It extends `\ExeQue\FluentAssert\Exceptions\InvalidArgumentException`.
+        - It provides multiple exceptions in the `getExceptions()` method.
+        - See [Grouped Assertions](#grouped-assertions).
+    - `\ExeQue\FluentAssert\Exceptions\IndexedInvalidArgumentException` is thrown on positional or iterative assertions
+        - It extends `\ExeQue\FluentAssert\Exceptions\InvalidArgumentException`.
+        - It provides the index of the failing assertion in the `getIndex()` method.
+        - It provides the original message in the `getOriginalMessage()` method.
+        - See [Positional Assertions](#positional-assertions) or [Iterative Assertions](#iterative-assertions).
 
 ## Example
 
@@ -243,11 +243,16 @@ An extended implementation of `webmozart/assert` is available in the `ExeQue\Flu
 
 The following additional assertions are available:
 
-| Method                                                      | Description                                                        |
-|-------------------------------------------------------------|--------------------------------------------------------------------|
-| `hasIndices($value, string $message = '')`                  | Check that a value has indices (array or ArrayAccess)              |
-| `arrayContains($array, mixed $value, string $message = '')` | Check that a value contains another value                          |
-| `type($value, string $type, string $message = '')`          | Check that a value is of a certain type (using `get_debug_type()`) |
+| Method                                                                | Description                                                        |
+|-----------------------------------------------------------------------|--------------------------------------------------------------------|
+| `hasIndices($value, string $message = '')`                            | Check that a value has indices (array or ArrayAccess)              |
+| `arrayContains($array, mixed $value, string $message = '')`           | Check that a value contains another value                          |
+| `type($value, string $type, string $message = '')`                    | Check that a value is of a certain type (using `get_debug_type()`) |
+| `publicPropertyExists($value, string $name, string $message = '')`    | Check that a value has a public property                           | 
+| `protectedPropertyExists($value, string $name, string $message = '')` | Check that a value has a protected property                        |
+| `privatePropertyExists($value, string $name, string $message = '')`   | Check that a value has a private property                          |
+| `staticPropertyExists($value, string $name, string $message = '')`    | Check that a value has a static property                           |
+| `instancedPropertyExists($value, string $name, string $message = '')` | Check that a value has an instanced property                       |
 
 ## Development
 
