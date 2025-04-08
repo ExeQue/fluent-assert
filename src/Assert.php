@@ -80,7 +80,7 @@ class Assert
 
         try {
             if (is_string($index) || is_int($index)) {
-                if(is_array($this->value) || $this->value instanceof ArrayAccess) {
+                if (is_array($this->value) || $this->value instanceof ArrayAccess) {
                     $this->keyExists($index, $message);
                     $value = $this->value[$index];
                 } else {

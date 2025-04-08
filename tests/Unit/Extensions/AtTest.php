@@ -39,13 +39,13 @@ it('can use a callable to extract the value to assert on', function () {
     $assert = Assert::for($items);
 
     $assert->at(
-        fn(array $input) => $input[1],
-        fn(Assert $assert) => expect($assert->value())->toBe($expected)
+        fn (array $input) => $input[1],
+        fn (Assert $assert) => expect($assert->value())->toBe($expected)
     );
 });
 
-it('can reference object properties', function() {
-    $object = new class {
+it('can reference object properties', function () {
+    $object = new class () {
         public string $name = 'John Doe';
     };
 
@@ -55,13 +55,13 @@ it('can reference object properties', function() {
         expect($item->value())->toBe($object->name)->and($key)->toBe('name');
     });
 
-    expect(function() {
-        $object = new class {
+    expect(function () {
+        $object = new class () {
             private string $name = 'John Doe';
         };
 
         $assert = Assert::for($object);
 
-        $assert->at('name', fn() => '');
+        $assert->at('name', fn () => '');
     })->toThrow(InvalidArgumentException::class);
 });
