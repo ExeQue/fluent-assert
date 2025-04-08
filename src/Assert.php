@@ -73,14 +73,19 @@ class Assert
     /**
      * @param callable(Assert, string|int): void $callback
      */
-    public function at(string|int $index, callable $callback, string $message = ''): static
+    public function at(string|int|callable $index, callable $callback, string $message = ''): static
     {
         $this->used = true;
 
         try {
-            $this->keyExists($index, $message);
+            if (is_string($index) || is_int($index)) {
+                $this->keyExists($index, $message);
+                $value = $this->value[$index];
+            } else {
+                $value = $index($this->value);
+            }
 
-            $callback(self::for($this->value[$index]), $index);
+            $callback(self::for($value), $index);
         } catch (InvalidArgumentException $exception) {
             throw new IndexedInvalidArgumentException(
                 index: $index,

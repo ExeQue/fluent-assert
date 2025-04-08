@@ -27,3 +27,18 @@ it('fails if the index does not exist', function () {
     expect(fn () => $assert->at('c', fn () => ''))->not->toThrow(InvalidArgumentException::class)
         ->and(fn () => $assert->at('d', fn () => ''))->toThrow(InvalidArgumentException::class);
 });
+
+it('can use a callable to extract the value to assert on', function () {
+    $items = [
+        random_bytes(8),
+        $expected = random_bytes(8),
+        random_bytes(8),
+    ];
+
+    $assert = Assert::for($items);
+
+    $assert->at(
+        fn(array $input) => $input[1],
+        fn(Assert $assert) => expect($assert->value())->toBe($expected)
+    );
+});
