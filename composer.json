@@ -5,8 +5,7 @@
     "minimum-stability": "stable",
     "require": {
         "php": "^8.2",
-        "webmozart/assert": "^1.11",
-        "exeque/php-dedent": "^0.2.0"
+        "webmozart/assert": "^1.11"
     },
     "require-dev": {
         "pestphp/pest": "^3.8",
