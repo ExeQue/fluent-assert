@@ -39,7 +39,7 @@ There are a few differences between this library and `webmozart/assert`:
 ## Example
 
 ```php
-use Exeque\FluentAssert\Assert;
+use ExeQue\FluentAssert\Assert;
 
 $assert = Assert::for('foo bar');
 
@@ -57,7 +57,7 @@ $value = $assert->value(); // 'foo bar'
 The [example](https://github.com/webmozarts/assert#example) from `webmozart/assert` can be rewritten as:
 
 ```php
-use Exeque\FluentAssert\Assert;
+use ExeQue\FluentAssert\Assert;
 
 class Employee
 {
@@ -85,7 +85,7 @@ The fluent interface provides a `and()` and `or()` method to group assertions.
 This is useful when you want to make multiple assertions at once and a singular combined error.
 
 ```php
-use Exeque\FluentAssert\Assert;
+use ExeQue\FluentAssert\Assert;
 
 $assert = Assert::for('fizz buzz');
 
@@ -121,7 +121,7 @@ The `each()` method allows you to iterate over an array or an `ArrayAccess` obje
 The errors thrown will have a prefix of failing index applied.
 
 ```php
-use Exeque\FluentAssert\Assert;
+use ExeQue\FluentAssert\Assert;
 
 $assert = Assert::for(['foo', 'bar', 'baz']);
 
@@ -148,7 +148,7 @@ It automatically calls `keyExists()` on the index before applying the assertion.
 The errors thrown will have a prefix of failing index applied.
 
 ```php
-use Exeque\FluentAssert\Assert;
+use ExeQue\FluentAssert\Assert;
 
 // Works with integer indices
 $assert = Assert::for(['foo', 'bar', 'baz']);
@@ -170,7 +170,7 @@ Sometimes you only want to apply certain assertions if a condition is met or not
 this.
 
 ```php
-use Exeque\FluentAssert\Assert;
+use ExeQue\FluentAssert\Assert;
 use ExeQue\FluentAssert\ConditionAssert;
 
 $assert = Assert::for(['foo', 'bar', 'baz']);
@@ -225,7 +225,7 @@ $assert->when(
 The `not()` method allows you to invert the assertion. This is useful when the assertions MUST fail.
 
 ```php
-use Exeque\FluentAssert\Assert;
+use ExeQue\FluentAssert\Assert;
 
 $assert = Assert::for([1, 2, 3, 4]);
 
