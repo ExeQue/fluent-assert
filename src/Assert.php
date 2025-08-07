@@ -48,7 +48,7 @@ class Assert
     }
 
     /**
-     * @param callable(Assert, string|int): void $callback
+     * @param callable(Assert, string|int): mixed $callback
      */
     public function each(callable $callback, string $message = ''): static
     {
@@ -72,7 +72,7 @@ class Assert
     }
 
     /**
-     * @param callable(Assert, string|int|null): void $callback
+     * @param callable(Assert, string|int|null): mixed $callback
      */
     public function at(string|int|callable $index, callable $callback, string $message = ''): static
     {
@@ -107,7 +107,7 @@ class Assert
     }
 
     /**
-     * @param callable(Assert): void[] $callbacks
+     * @param callable(Assert): mixed[] $callbacks
      */
     public function or(callable ...$callbacks): static
     {
@@ -132,7 +132,7 @@ class Assert
     }
 
     /**
-     * @param callable(Assert): void[] $callbacks
+     * @param callable(Assert): mixed[] $callbacks
      */
     public function and(callable ...$callbacks): static
     {
