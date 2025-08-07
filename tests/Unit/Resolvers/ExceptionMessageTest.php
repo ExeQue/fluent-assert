@@ -37,8 +37,8 @@ it('strips dots from the end of all messages except the last', function () {
     expect($actual)->toBe($expected);
 });
 
-it('can take any glue and final glue', function(array $messages, string $glue, string $finalGlue, string $expected) {
-    $exceptions = array_map(fn($message) => new InvalidArgumentException($message), $messages);
+it('can take any glue and final glue', function (array $messages, string $glue, string $finalGlue, string $expected) {
+    $exceptions = array_map(fn ($message) => new InvalidArgumentException($message), $messages);
 
     $message = ExceptionMessage::for(...$exceptions);
 
@@ -46,7 +46,7 @@ it('can take any glue and final glue', function(array $messages, string $glue, s
 
     expect($actual)->toBe($expected);
 })->with([
-    'first' => fn() => [
+    'first' => fn () => [
         'messages' => [
             'first message',
             'second message',
@@ -56,7 +56,7 @@ it('can take any glue and final glue', function(array $messages, string $glue, s
         'finalGlue' => ' and ',
         'expected' => 'first message, second message and third message.',
     ],
-    'second' => fn() => [
+    'second' => fn () => [
         'messages' => [
             'first message.',
             'second message.',
@@ -66,7 +66,7 @@ it('can take any glue and final glue', function(array $messages, string $glue, s
         'finalGlue' => ' and ',
         'expected' => 'first message and second message and third message.',
     ],
-    'third' => fn() => [
+    'third' => fn () => [
         'messages' => [
             'first message.',
             'second message.',

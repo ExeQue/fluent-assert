@@ -69,7 +69,7 @@ class ExceptionMessage
 
     private function position(int $index): string
     {
-        if(count($this->exceptions) === 1) {
+        if (count($this->exceptions) === 1) {
             return 'only';
         }
 
