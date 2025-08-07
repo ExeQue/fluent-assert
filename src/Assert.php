@@ -107,7 +107,7 @@ class Assert
     }
 
     /**
-     * @param callable(Assert): mixed[] $callbacks
+     * @param array<callable(Assert): mixed> $callbacks
      */
     public function or(callable ...$callbacks): static
     {
@@ -132,7 +132,7 @@ class Assert
     }
 
     /**
-     * @param callable(Assert): mixed[] $callbacks
+     * @param array<callable(Assert): mixed> $callbacks
      */
     public function and(callable ...$callbacks): static
     {
