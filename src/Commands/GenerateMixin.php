@@ -19,6 +19,7 @@ use function ExeQue\Dedent\dedent;
 
 /**
  * @internal
+ * @codeCoverageIgnore
  */
 class GenerateMixin extends Command
 {
@@ -75,11 +76,14 @@ namespace ExeQue\FluentAssert\Concerns;
 
 use ExeQue\FluentAssert\Assert;
 use ExeQue\FluentAssert\Base;
+use UnitEnum;
+use BackedEnum;
 
 /**
  * This file is auto-generated. Do not edit it manually.
  *
  * @extends Assert
+ * @codeCoverageIgnore
  */
 trait {$className}
 {

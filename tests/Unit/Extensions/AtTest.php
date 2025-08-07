@@ -76,3 +76,13 @@ it('does not report index when the key does not exist', function () {
         IndexedInvalidArgumentException::class,
     );
 });
+
+it('throws an indexed invalid argument when the callback fails', function () {
+    $assert = Assert::for(['a', 'b', 'c']);
+
+    expect(fn () => $assert->at(1, fn () => throw new InvalidArgumentException('Test')))
+        ->toThrow(function (IndexedInvalidArgumentException $exception) {
+            expect($exception->getIndex())->toBe(1)
+                ->and($exception->getOriginalMessage())->toBe('Test');
+        });
+});

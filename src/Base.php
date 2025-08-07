@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace ExeQue\FluentAssert;
 
 use ArrayAccess;
+use BackedEnum;
 use ExeQue\FluentAssert\Exceptions\InvalidArgumentException;
 use ReflectionClass;
 use ReflectionProperty;
+use UnitEnum;
 use Webmozart\Assert\Assert as WebmozartAssert;
 
 /**
@@ -179,5 +181,59 @@ class Base extends WebmozartAssert
                 );
             }
         });
+    }
+
+    /**
+     * @param string $value
+     * @param class-string<UnitEnum> $enumClass
+     * @param string $message
+     * @return void
+     */
+    public static function enumCaseExists($value, string $enumClass, string $message = ''): void
+    {
+        static::implementsInterface(
+            $enumClass,
+            UnitEnum::class,
+            'Expected enum class to implement UnitEnum interface.'
+        );
+
+        $names = array_map(fn (UnitEnum $enum) => $enum->name, $enumClass::cases());
+
+        if (!in_array($value, $names, true)) {
+            static::reportInvalidArgument(
+                sprintf(
+                    $message ?: 'Expected value to be one of %s. Got %s',
+                    implode(', ', $names),
+                    static::typeToString($value),
+                ),
+            );
+        }
+    }
+
+    /**
+     * @param string $value
+     * @param class-string<BackedEnum> $enumClass
+     * @param string $message
+     * @return void
+     */
+    public static function enumValueExists($value, string $enumClass, string $message = ''): void
+    {
+        static::implementsInterface(
+            $enumClass,
+            BackedEnum::class,
+            'Expected enum class to implement BackedEnum interface.'
+        );
+
+        $values = array_map(fn (BackedEnum $enum) => $enum->value, $enumClass::cases());
+
+        if (!in_array($value, $values, true)) {
+            static::reportInvalidArgument(
+                sprintf(
+                    $message ?: 'Expected value to be one of %s. Got %s',
+                    implode(', ', $values),
+                    static::typeToString($value),
+                ),
+            );
+        }
     }
 }

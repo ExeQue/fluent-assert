@@ -6,6 +6,9 @@ namespace ExeQue\FluentAssert\Resolvers;
 
 use ExeQue\FluentAssert\Exceptions\InvalidArgumentException;
 
+/**
+ * @internal
+ */
 class ExceptionMessage
 {
     private array $exceptions;
@@ -57,7 +60,7 @@ class ExceptionMessage
 
         $message = preg_replace('/\. Got: (.+)$/', ' (Got: $1)', $message);
 
-        if ($position === 'last' && $lastChar !== '.') {
+        if (($position === 'last' || $position === 'only') && $message[-1] !== '.') {
             $message .= '.';
         }
 
@@ -66,6 +69,10 @@ class ExceptionMessage
 
     private function position(int $index): string
     {
+        if(count($this->exceptions) === 1) {
+            return 'only';
+        }
+
         if ($index === 0) {
             return 'first';
         }

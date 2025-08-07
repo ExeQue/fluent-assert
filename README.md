@@ -253,6 +253,8 @@ The following additional assertions are available:
 | `privatePropertyExists($value, string $name, string $message = '')`   | Check that a value has a private property                          |
 | `staticPropertyExists($value, string $name, string $message = '')`    | Check that a value has a static property                           |
 | `instancedPropertyExists($value, string $name, string $message = '')` | Check that a value has an instanced property                       |
+| `enumCaseExists($value, string $enumClass, string $message = '')`     | Check that a value is a case in an enum                            |
+| `enumValueExists($value, string $enumClass, string $message = '')`    | Check that a value is a value in an enum                           |
 
 ## Development
 

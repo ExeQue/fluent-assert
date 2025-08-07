@@ -61,3 +61,17 @@ it('checks if static property exists', function () {
     $assert->staticPropertyExists('bar');
     expect(fn () => $assert->staticPropertyExists('foo'))->toThrow(InvalidArgumentException::class);
 });
+
+it('checks if instanced property exists', function () {
+    $assert = Assert::for(
+        new class () {
+            public string $foo = 'Foo';
+            public static string $bar = 'Bar';
+
+            private string $baz = 'Baz';
+        },
+    );
+
+    $assert->instancedPropertyExists('foo');
+    expect(fn () => $assert->instancedPropertyExists('bar'))->toThrow(InvalidArgumentException::class);
+});
