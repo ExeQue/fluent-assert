@@ -44,5 +44,5 @@ jobs:
       - name: Lint
         run: ./vendor/bin/pint --test
       - name: Tests
-        run: ./vendor/bin/pest --ci --parallel
+        run: ./vendor/bin/pest --ci --parallel --coverage
 
