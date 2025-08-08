@@ -60,13 +60,13 @@ it('can test keys in an iterable', function () {
     $assert = Assert::for($map);
 
     $assert->eachKey(
-        fn(Assert $key, int $value) => $key->isInstanceOf(stdClass::class)
+        fn (Assert $key, int $value) => $key->isInstanceOf(stdClass::class)
     );
-    expect(fn() => $assert->eachKey(fn(Assert $key) => $key->string()))->toThrow(function(IndexedInvalidArgumentException $exception) {
+    expect(fn () => $assert->eachKey(fn (Assert $key) => $key->string()))->toThrow(function (IndexedInvalidArgumentException $exception) {
         expect($exception->getIndex())->toBe(0);
     });
 
     $assert = Assert::for([1,2,3,4]);
 
-    expect(fn() => $assert->eachKey(fn(Assert $key) => $key->string()))->toThrow(InvalidArgumentException::class);
+    expect(fn () => $assert->eachKey(fn (Assert $key) => $key->string()))->toThrow(InvalidArgumentException::class);
 });
