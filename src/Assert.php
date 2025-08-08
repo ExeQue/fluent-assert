@@ -57,12 +57,37 @@ class Assert
         $this->isIterable($message);
 
         try {
+            $counter = 0;
             foreach ($this->value as $index => $item) {
                 $callback(self::for($item), $index);
+                $counter++;
             }
         } catch (InvalidArgumentException $exception) {
             throw new IndexedInvalidArgumentException(
-                index: $index,
+                index: is_scalar($index) ? $index : $counter,
+                message: $exception->getMessage(),
+                previous: $exception,
+            );
+        }
+
+        return $this;
+    }
+
+    public function eachKey(callable $callback, string $message = ''): static
+    {
+        $this->used = true;
+
+        $this->isIterable($message);
+
+        try {
+            $counter = 0;
+            foreach ($this->value as $index => $item) {
+                $callback(self::for($index), $item);
+                $counter++;
+            }
+        } catch (InvalidArgumentException $exception) {
+            throw new IndexedInvalidArgumentException(
+                index: is_scalar($index) ? $index : $counter,
                 message: $exception->getMessage(),
                 previous: $exception,
             );
