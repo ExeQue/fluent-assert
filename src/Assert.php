@@ -211,6 +211,17 @@ class Assert
         throw new InvalidArgumentException($message ?: 'Did not fail expectation.');
     }
 
+    public function nullOr(callable $callback): static
+    {
+        $this->used = true;
+
+        Base::nullOr($this->value, function () use ($callback) {
+            $callback($this->duplicate());
+        });
+
+        return $this;
+    }
+
     public function duplicate(): static
     {
         return new static($this->value);

@@ -259,6 +259,7 @@ The following additional assertions are available:
 | `instancedPropertyExists($value, string $name, string $message = '')` | Check that a value has an instanced property                       |
 | `enumCaseExists($value, string $enumClass, string $message = '')`     | Check that a value is a case in an enum                            |
 | `enumValueExists($value, string $enumClass, string $message = '')`    | Check that a value is a value in an enum                           |
+| `nullOr($value, callable $callback)`                                  | Execute the callback if the value is not null                      |
 
 ## Development
 

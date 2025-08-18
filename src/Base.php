@@ -236,4 +236,18 @@ class Base extends WebmozartAssert
             );
         }
     }
+
+    /**
+     * @param mixed $value
+     * @param callable $callback
+     * @return void
+     */
+    public static function nullOr($value, callable $callback): void
+    {
+        if ($value === null) {
+            return;
+        }
+
+        $callback($value);
+    }
 }
