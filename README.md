@@ -141,9 +141,9 @@ The `IndexedInvalidArgumentException` can provide the index that failed use `get
 
 An alternative version `eachKey` is available to apply assertions to the keys of an iterable.
 
-```php
-
 ### Positional Assertions
+
+```php
 
 The `at()` method allows you to assert a value at a specific index in an array or an `ArrayAccess` object.
 
