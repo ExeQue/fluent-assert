@@ -17,9 +17,9 @@ use Webmozart\Assert\Assert as WebmozartAssert;
  */
 class Base extends WebmozartAssert
 {
-    protected static function reportInvalidArgument($message): void
+    protected static function reportInvalidArgument($message, ?InvalidArgumentException $previous = null): void
     {
-        throw new InvalidArgumentException($message);
+        throw new InvalidArgumentException($message, previous: $previous);
     }
 
     /**
@@ -264,7 +264,7 @@ class Base extends WebmozartAssert
         foreach ($keys as $key) {
             try {
                 self::keyExists($value, $key);
-            } catch (InvalidArgumentException) {
+            } catch (InvalidArgumentException $exception) {
                 $normalizer = fn (array $keys) => implode(
                     ', ',
                     array_map(
@@ -282,8 +282,39 @@ class Base extends WebmozartAssert
                         $expected,
                         $actual,
                     ),
+                    $exception
                 );
             }
+        }
+    }
+
+    /**
+     * @param mixed $value
+     * @param callable $callback
+     * @param string $message
+     * @return void
+     */
+    public static function fulfills($value, callable $callback, string $message = ''): void
+    {
+        $defaultMessage = 'Value does not fulfill the given condition.';
+
+        $previous = null;
+        try {
+            $match = $callback($value);
+        } catch (InvalidArgumentException $exception) {
+            $match = $exception;
+            $previous = $exception;
+        }
+
+        if ($match instanceof InvalidArgumentException) {
+            $defaultMessage .= ' ' . $match->getMessage();
+        }
+
+        if ($match !== true) {
+            static::reportInvalidArgument(
+                $message ?: $defaultMessage,
+                $previous
+            );
         }
     }
 }

@@ -259,6 +259,7 @@ The following additional assertions are available:
 | `enumValueExists($value, string $enumClass, string $message = '')`    | Check that a value is a value in an enum                             |
 | `keysExists($value, array $keys, string $message = '')`               | Check that a value has all the specified keys (array or ArrayAccess) |
 | `nullOr($value, callable $callback)`                                  | Execute the callback if the value is not null                        |
+| `fulfills($value, callable $callback, string $message = '')`          | Check that a value fulfills a custom condition                       |
 
 ## Development
 

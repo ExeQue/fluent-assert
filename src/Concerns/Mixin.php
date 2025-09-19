@@ -1345,6 +1345,78 @@ trait Mixin
 
     // endregion [ Base::float ]
 
+    // region [ Base::fulfills ]
+
+    /**
+     * @param callable $callback
+     * @param string $message
+     *
+     * @see Base::fulfills
+     */
+    public function fulfills($callback, $message = ''): static
+    {
+        $this->used = true;
+
+        Base::fulfills($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param callable $callback
+     * @param string $message
+     *
+     * @see Base::nullOrFulfills
+     */
+    public function nullOrFulfills($callback, $message = ''): static
+    {
+        $this->used = true;
+
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::fulfills($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param callable $callback
+     * @param string $message
+     *
+     * @see Base::allFulfills
+     */
+    public function allFulfills($callback, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->fulfills(...$args)
+        );
+    }
+
+    /**
+     * @param callable $callback
+     * @param string $message
+     *
+     * @see Base::allNullOrFulfills
+     */
+    public function allNullOrFulfills($callback, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->nullOrFulfills(...$args)
+        );
+    }
+
+    // endregion [ Base::fulfills ]
+
     // region [ Base::greaterThan ]
 
     /**
