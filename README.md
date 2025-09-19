@@ -143,8 +143,6 @@ An alternative version `eachKey` is available to apply assertions to the keys of
 
 ### Positional Assertions
 
-```php
-
 The `at()` method allows you to assert a value at a specific index in an array or an `ArrayAccess` object.
 
 It automatically calls `keyExists()` on the index before applying the assertion.
