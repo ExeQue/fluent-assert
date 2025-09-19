@@ -23,7 +23,7 @@ class Base extends WebmozartAssert
     }
 
     /**
-     * @param mixed  $value
+     * @param mixed $value
      * @param string $message
      *
      * @return void
@@ -41,8 +41,8 @@ class Base extends WebmozartAssert
     }
 
     /**
-     * @param array  $array
-     * @param mixed  $value
+     * @param array $array
+     * @param mixed $value
      * @param string $message
      *
      * @return void
@@ -53,7 +53,7 @@ class Base extends WebmozartAssert
     }
 
     /**
-     * @param mixed  $value
+     * @param mixed $value
      * @param string $type
      * @param string $message
      *
@@ -194,7 +194,7 @@ class Base extends WebmozartAssert
         static::implementsInterface(
             $enumClass,
             UnitEnum::class,
-            'Expected enum class to implement UnitEnum interface.'
+            'Expected enum class to implement UnitEnum interface.',
         );
 
         $names = array_map(fn (UnitEnum $enum) => $enum->name, $enumClass::cases());
@@ -221,7 +221,7 @@ class Base extends WebmozartAssert
         static::implementsInterface(
             $enumClass,
             BackedEnum::class,
-            'Expected enum class to implement BackedEnum interface.'
+            'Expected enum class to implement BackedEnum interface.',
         );
 
         $values = array_map(fn (BackedEnum $enum) => $enum->value, $enumClass::cases());
@@ -249,5 +249,41 @@ class Base extends WebmozartAssert
         }
 
         $callback($value);
+    }
+
+    /**
+     * @param mixed $value
+     * @param array $keys
+     * @param string $message
+     * @return void
+     */
+    public static function keysExists($value, array $keys, string $message = ''): void
+    {
+        self::hasIndices($value, $message);
+
+        foreach ($keys as $key) {
+            try {
+                self::keyExists($value, $key);
+            } catch (InvalidArgumentException) {
+                $normalizer = fn (array $keys) => implode(
+                    ', ',
+                    array_map(
+                        self::valueToString(...),
+                        $keys
+                    )
+                );
+
+                $expected = "[{$normalizer($keys)}]";
+                $actual = "[{$normalizer(array_keys($value))}]";
+
+                static::reportInvalidArgument(
+                    sprintf(
+                        $message ?: 'Expected keys %s to exist. Got: %s',
+                        $expected,
+                        $actual,
+                    ),
+                );
+            }
+        }
     }
 }

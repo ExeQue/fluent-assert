@@ -3365,6 +3365,78 @@ trait Mixin
 
     // endregion [ Base::keyNotExists ]
 
+    // region [ Base::keysExists ]
+
+    /**
+     * @param array $keys
+     * @param string $message
+     *
+     * @see Base::keysExists
+     */
+    public function keysExists($keys, $message = ''): static
+    {
+        $this->used = true;
+
+        Base::keysExists($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param array $keys
+     * @param string $message
+     *
+     * @see Base::nullOrKeysExists
+     */
+    public function nullOrKeysExists($keys, $message = ''): static
+    {
+        $this->used = true;
+
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::keysExists($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param array $keys
+     * @param string $message
+     *
+     * @see Base::allKeysExists
+     */
+    public function allKeysExists($keys, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->keysExists(...$args)
+        );
+    }
+
+    /**
+     * @param array $keys
+     * @param string $message
+     *
+     * @see Base::allNullOrKeysExists
+     */
+    public function allNullOrKeysExists($keys, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->nullOrKeysExists(...$args)
+        );
+    }
+
+    // endregion [ Base::keysExists ]
+
     // region [ Base::length ]
 
     /**

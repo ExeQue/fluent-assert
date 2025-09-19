@@ -247,19 +247,20 @@ An extended implementation of `webmozart/assert` is available in the `ExeQue\Flu
 
 The following additional assertions are available:
 
-| Method                                                                | Description                                                        |
-|-----------------------------------------------------------------------|--------------------------------------------------------------------|
-| `hasIndices($value, string $message = '')`                            | Check that a value has indices (array or ArrayAccess)              |
-| `arrayContains($array, mixed $value, string $message = '')`           | Check that a value contains another value                          |
-| `type($value, string $type, string $message = '')`                    | Check that a value is of a certain type (using `get_debug_type()`) |
-| `publicPropertyExists($value, string $name, string $message = '')`    | Check that a value has a public property                           | 
-| `protectedPropertyExists($value, string $name, string $message = '')` | Check that a value has a protected property                        |
-| `privatePropertyExists($value, string $name, string $message = '')`   | Check that a value has a private property                          |
-| `staticPropertyExists($value, string $name, string $message = '')`    | Check that a value has a static property                           |
-| `instancedPropertyExists($value, string $name, string $message = '')` | Check that a value has an instanced property                       |
-| `enumCaseExists($value, string $enumClass, string $message = '')`     | Check that a value is a case in an enum                            |
-| `enumValueExists($value, string $enumClass, string $message = '')`    | Check that a value is a value in an enum                           |
-| `nullOr($value, callable $callback)`                                  | Execute the callback if the value is not null                      |
+| Method                                                                | Description                                                          |
+|-----------------------------------------------------------------------|----------------------------------------------------------------------|
+| `hasIndices($value, string $message = '')`                            | Check that a value has indices (array or ArrayAccess)                |
+| `arrayContains($array, mixed $value, string $message = '')`           | Check that a value contains another value                            |
+| `type($value, string $type, string $message = '')`                    | Check that a value is of a certain type (using `get_debug_type()`)   |
+| `publicPropertyExists($value, string $name, string $message = '')`    | Check that a value has a public property                             | 
+| `protectedPropertyExists($value, string $name, string $message = '')` | Check that a value has a protected property                          |
+| `privatePropertyExists($value, string $name, string $message = '')`   | Check that a value has a private property                            |
+| `staticPropertyExists($value, string $name, string $message = '')`    | Check that a value has a static property                             |
+| `instancedPropertyExists($value, string $name, string $message = '')` | Check that a value has an instanced property                         |
+| `enumCaseExists($value, string $enumClass, string $message = '')`     | Check that a value is a case in an enum                              |
+| `enumValueExists($value, string $enumClass, string $message = '')`    | Check that a value is a value in an enum                             |
+| `keysExists($value, array $keys, string $message = '')`               | Check that a value has all the specified keys (array or ArrayAccess) |
+| `nullOr($value, callable $callback)`                                  | Execute the callback if the value is not null                        |
 
 ## Development
 
