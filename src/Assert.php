@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace ExeQue\FluentAssert;
 
 use ArrayAccess;
+use ExeQue\FluentAssert\Concerns\Macroable;
 use ExeQue\FluentAssert\Concerns\Mixin;
 use ExeQue\FluentAssert\Exceptions\BulkInvalidArgumentException;
 use ExeQue\FluentAssert\Exceptions\IndexedInvalidArgumentException;
@@ -18,6 +19,7 @@ use ExeQue\FluentAssert\Resolvers\ExceptionMessage;
 class Assert
 {
     use Mixin;
+    use Macroable;
 
     protected bool $used = false;
 
@@ -35,6 +37,16 @@ class Assert
      * @return self<TValue>
      */
     public static function for(mixed $value): static
+    {
+        return new static($value);
+    }
+
+    /**
+     * @param TValue $value
+     *
+     * @return self<TValue>
+     */
+    public static function that(mixed $value): static
     {
         return new static($value);
     }

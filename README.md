@@ -41,7 +41,7 @@ There are a few differences between this library and `webmozart/assert`:
 ```php
 use ExeQue\FluentAssert\Assert;
 
-$assert = Assert::for('foo bar');
+$assert = Assert::that('foo bar');
 
 // All methods from webmozart/assert are available
 // The arguments are the same except for the first one (the value to assert).
@@ -63,7 +63,7 @@ class Employee
 {
     public function __construct($id)
     {
-        Assert::for($id)
+        Assert::that($id)
             ->integer('The employee ID must be an integer. Got: %s')
             ->greaterThan(0, 'The employee ID must be a positive integer. Got: %s');
     }
@@ -87,7 +87,7 @@ This is useful when you want to make multiple assertions at once and a singular 
 ```php
 use ExeQue\FluentAssert\Assert;
 
-$assert = Assert::for('fizz buzz');
+$assert = Assert::that('fizz buzz');
 
 // Using `and()` will throw an exception if any of the assertions fail.
 // The errors will be combined into a single exception.
@@ -123,7 +123,7 @@ The errors thrown will have a prefix of failing index applied.
 ```php
 use ExeQue\FluentAssert\Assert;
 
-$assert = Assert::for(['foo', 'bar', 'baz']);
+$assert = Assert::that(['foo', 'bar', 'baz']);
 
 $assert->each(
     fn (Assert $assert) => $assert->string()->length(3)
@@ -151,14 +151,14 @@ The errors thrown will have a prefix of failing index applied.
 use ExeQue\FluentAssert\Assert;
 
 // Works with integer indices
-$assert = Assert::for(['foo', 'bar', 'baz']);
+$assert = Assert::that(['foo', 'bar', 'baz']);
 $assert->at(0, fn (Assert $assert) => $assert->eq('foo'));
 
 // Works with string indices
-$assert = Assert::for(['foo' => 'bar', 'baz' => 'qux']);
+$assert = Assert::that(['foo' => 'bar', 'baz' => 'qux']);
 $assert->at('baz', fn (Assert $assert) => $assert->eq('qux'));
 
-$assert = Assert::for(['foo' => 'bar']);
+$assert = Assert::that(['foo' => 'bar']);
 $assert->at('foo', fn (Assert $assert) => $assert->eq('fizz'));
 // -> ExeQue\FluentAssert\Exceptions\IndexedInvalidArgumentException:
 //    [foo]: Expected a value equal to "fizz". Got: "bar"
@@ -173,7 +173,7 @@ this.
 use ExeQue\FluentAssert\Assert;
 use ExeQue\FluentAssert\ConditionAssert;
 
-$assert = Assert::for(['foo', 'bar', 'baz']);
+$assert = Assert::that(['foo', 'bar', 'baz']);
 
 // The `when()` method takes a callable that may return a boolean value
 // or a `ConditionAssert` object.
@@ -190,7 +190,7 @@ $assert->when(
 // returns null (or nothing) and the inner assertion did not fail,
 // then that is considered true.
 
-$assert = Assert::for('foo bar');
+$assert = Assert::that('foo bar');
 
 $assert->when(
     function (Assert $assert) {
@@ -227,7 +227,7 @@ The `not()` method allows you to invert the assertion. This is useful when the a
 ```php
 use ExeQue\FluentAssert\Assert;
 
-$assert = Assert::for([1, 2, 3, 4]);
+$assert = Assert::that([1, 2, 3, 4]);
 
 $assert->not(
     fn (Assert $assert) => $assert->arrayContains(3),
@@ -253,6 +253,26 @@ The following additional assertions are available:
 | `privatePropertyExists($value, string $name, string $message = '')`   | Check that a value has a private property                          |
 | `staticPropertyExists($value, string $name, string $message = '')`    | Check that a value has a static property                           |
 | `instancedPropertyExists($value, string $name, string $message = '')` | Check that a value has an instanced property                       |
+
+## Macros
+
+You can define your own custom assertions using macros.
+
+```php
+use ExeQue\FluentAssert\Assert;
+
+// Define a custom macro
+Assert::macro('isFoo', function (string $message = '') {
+    /** @var Assert $this */
+    $this->eq('foo', $message);
+});
+
+// Use the custom macro
+Assert::that('foo')->isFoo(); // Passes
+Assert::that('bar')->isFoo();
+// -> ExeQue\FluentAssert\Exceptions\InvalidArgumentException:
+//    Expected a value equal to "foo". Got: "bar"
+```
 
 ## Development
 

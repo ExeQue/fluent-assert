@@ -11,7 +11,8 @@
         "pestphp/pest": "^3.8",
         "symfony/console": "^7.2",
         "symfony/var-dumper": "^7.2",
-        "laravel/pint": "^1.21"
+        "laravel/pint": "^1.21",
+        "exeque/php-dedent": "^0.2.0"
     },
     "license": "MIT",
     "autoload": {
@@ -44,8 +45,8 @@
         "validation"
     ],
     "scripts": {
-        "test": "vendor/bin/pest",
-        "lint": "vendor/bin/pint",
+        "test": "vendor/bin/pest -p",
+        "lint": "vendor/bin/pint -p",
         "build": [
             "@php bin/console generate:mixin",
             "vendor/bin/pint src/Concerns/Mixin.php"
