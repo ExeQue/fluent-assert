@@ -6,11 +6,14 @@ namespace ExeQue\FluentAssert\Concerns;
 
 use ExeQue\FluentAssert\Assert;
 use ExeQue\FluentAssert\Base;
+use UnitEnum;
+use BackedEnum;
 
 /**
  * This file is auto-generated. Do not edit it manually.
  *
  * @extends Assert
+ * @codeCoverageIgnore
  */
 trait Mixin
 {
@@ -854,6 +857,150 @@ trait Mixin
 
     // endregion [ Base::endsWith ]
 
+    // region [ Base::enumCaseExists ]
+
+    /**
+     * @param class-string<UnitEnum> $enumClass
+     * @param string $message
+     *
+     * @see Base::enumCaseExists
+     */
+    public function enumCaseExists($enumClass, $message = ''): static
+    {
+        $this->used = true;
+
+        Base::enumCaseExists($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param class-string<UnitEnum> $enumClass
+     * @param string $message
+     *
+     * @see Base::nullOrEnumCaseExists
+     */
+    public function nullOrEnumCaseExists($enumClass, $message = ''): static
+    {
+        $this->used = true;
+
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::enumCaseExists($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param class-string<UnitEnum> $enumClass
+     * @param string $message
+     *
+     * @see Base::allEnumCaseExists
+     */
+    public function allEnumCaseExists($enumClass, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->enumCaseExists(...$args)
+        );
+    }
+
+    /**
+     * @param class-string<UnitEnum> $enumClass
+     * @param string $message
+     *
+     * @see Base::allNullOrEnumCaseExists
+     */
+    public function allNullOrEnumCaseExists($enumClass, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->nullOrEnumCaseExists(...$args)
+        );
+    }
+
+    // endregion [ Base::enumCaseExists ]
+
+    // region [ Base::enumValueExists ]
+
+    /**
+     * @param class-string<BackedEnum> $enumClass
+     * @param string $message
+     *
+     * @see Base::enumValueExists
+     */
+    public function enumValueExists($enumClass, $message = ''): static
+    {
+        $this->used = true;
+
+        Base::enumValueExists($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param class-string<BackedEnum> $enumClass
+     * @param string $message
+     *
+     * @see Base::nullOrEnumValueExists
+     */
+    public function nullOrEnumValueExists($enumClass, $message = ''): static
+    {
+        $this->used = true;
+
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::enumValueExists($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param class-string<BackedEnum> $enumClass
+     * @param string $message
+     *
+     * @see Base::allEnumValueExists
+     */
+    public function allEnumValueExists($enumClass, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->enumValueExists(...$args)
+        );
+    }
+
+    /**
+     * @param class-string<BackedEnum> $enumClass
+     * @param string $message
+     *
+     * @see Base::allNullOrEnumValueExists
+     */
+    public function allNullOrEnumValueExists($enumClass, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->nullOrEnumValueExists(...$args)
+        );
+    }
+
+    // endregion [ Base::enumValueExists ]
+
     // region [ Base::eq ]
 
     /**
@@ -1197,6 +1344,78 @@ trait Mixin
     }
 
     // endregion [ Base::float ]
+
+    // region [ Base::fulfills ]
+
+    /**
+     * @param callable $callback
+     * @param string $message
+     *
+     * @see Base::fulfills
+     */
+    public function fulfills($callback, $message = ''): static
+    {
+        $this->used = true;
+
+        Base::fulfills($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param callable $callback
+     * @param string $message
+     *
+     * @see Base::nullOrFulfills
+     */
+    public function nullOrFulfills($callback, $message = ''): static
+    {
+        $this->used = true;
+
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::fulfills($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param callable $callback
+     * @param string $message
+     *
+     * @see Base::allFulfills
+     */
+    public function allFulfills($callback, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->fulfills(...$args)
+        );
+    }
+
+    /**
+     * @param callable $callback
+     * @param string $message
+     *
+     * @see Base::allNullOrFulfills
+     */
+    public function allNullOrFulfills($callback, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->nullOrFulfills(...$args)
+        );
+    }
+
+    // endregion [ Base::fulfills ]
 
     // region [ Base::greaterThan ]
 
@@ -3217,6 +3436,78 @@ trait Mixin
     }
 
     // endregion [ Base::keyNotExists ]
+
+    // region [ Base::keysExists ]
+
+    /**
+     * @param array $keys
+     * @param string $message
+     *
+     * @see Base::keysExists
+     */
+    public function keysExists($keys, $message = ''): static
+    {
+        $this->used = true;
+
+        Base::keysExists($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param array $keys
+     * @param string $message
+     *
+     * @see Base::nullOrKeysExists
+     */
+    public function nullOrKeysExists($keys, $message = ''): static
+    {
+        $this->used = true;
+
+        if ($this->value === null) {
+            return $this;
+        }
+
+        Base::keysExists($this->value, ...func_get_args());
+
+        return $this;
+    }
+
+    /**
+     * @param array $keys
+     * @param string $message
+     *
+     * @see Base::allKeysExists
+     */
+    public function allKeysExists($keys, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->keysExists(...$args)
+        );
+    }
+
+    /**
+     * @param array $keys
+     * @param string $message
+     *
+     * @see Base::allNullOrKeysExists
+     */
+    public function allNullOrKeysExists($keys, $message = ''): static
+    {
+        $this->used = true;
+
+        $args = func_get_args();
+
+        return $this->each(
+            fn (self $assert) => $assert->nullOrKeysExists(...$args)
+        );
+    }
+
+    // endregion [ Base::keysExists ]
 
     // region [ Base::length ]
 

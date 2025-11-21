@@ -106,3 +106,19 @@ it('fails to assert value is type', function (string $type, mixed $input) {
         'input' => 'test',
     ],
 ]);
+
+it('does not assert if value is null', function () {
+    $this->expectNotToPerformAssertions();
+
+    Base::nullOr(null, function () {
+        throw new Exception('This should not be called');
+    });
+});
+
+it('asserts if value is not null', function () {
+    $input = hash('sha512', random_bytes(16));
+
+    Base::nullOr($input, function (mixed $value) use ($input) {
+        expect($value)->toBe($input);
+    });
+});

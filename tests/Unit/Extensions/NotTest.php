@@ -12,3 +12,13 @@ it('fails if assertion does not', function () {
         fn (Assert $assert) => $assert->arrayContains('b'),
     ))->toThrow(InvalidArgumentException::class);
 });
+
+it('passes if assertion does not', function () {
+    $this->expectNotToPerformAssertions();
+
+    $assert = Assert::for(['a', 'b', 'c']);
+
+    $assert->not(
+        fn (Assert $assert) => $assert->arrayContains('d'),
+    );
+});

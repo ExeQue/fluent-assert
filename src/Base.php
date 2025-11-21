@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace ExeQue\FluentAssert;
 
 use ArrayAccess;
+use BackedEnum;
 use ExeQue\FluentAssert\Exceptions\InvalidArgumentException;
 use ReflectionClass;
 use ReflectionProperty;
+use UnitEnum;
 use Webmozart\Assert\Assert as WebmozartAssert;
 
 /**
@@ -15,13 +17,13 @@ use Webmozart\Assert\Assert as WebmozartAssert;
  */
 class Base extends WebmozartAssert
 {
-    protected static function reportInvalidArgument($message): void
+    protected static function reportInvalidArgument($message, ?InvalidArgumentException $previous = null): void
     {
-        throw new InvalidArgumentException($message);
+        throw new InvalidArgumentException($message, previous: $previous);
     }
 
     /**
-     * @param mixed  $value
+     * @param mixed $value
      * @param string $message
      *
      * @return void
@@ -39,8 +41,8 @@ class Base extends WebmozartAssert
     }
 
     /**
-     * @param array  $array
-     * @param mixed  $value
+     * @param array $array
+     * @param mixed $value
      * @param string $message
      *
      * @return void
@@ -51,7 +53,7 @@ class Base extends WebmozartAssert
     }
 
     /**
-     * @param mixed  $value
+     * @param mixed $value
      * @param string $type
      * @param string $message
      *
@@ -179,5 +181,140 @@ class Base extends WebmozartAssert
                 );
             }
         });
+    }
+
+    /**
+     * @param string $value
+     * @param class-string<UnitEnum> $enumClass
+     * @param string $message
+     * @return void
+     */
+    public static function enumCaseExists($value, string $enumClass, string $message = ''): void
+    {
+        static::implementsInterface(
+            $enumClass,
+            UnitEnum::class,
+            'Expected enum class to implement UnitEnum interface.',
+        );
+
+        $names = array_map(fn (UnitEnum $enum) => $enum->name, $enumClass::cases());
+
+        if (!in_array($value, $names, true)) {
+            static::reportInvalidArgument(
+                sprintf(
+                    $message ?: 'Expected value to be one of %s. Got %s',
+                    implode(', ', $names),
+                    static::typeToString($value),
+                ),
+            );
+        }
+    }
+
+    /**
+     * @param string $value
+     * @param class-string<BackedEnum> $enumClass
+     * @param string $message
+     * @return void
+     */
+    public static function enumValueExists($value, string $enumClass, string $message = ''): void
+    {
+        static::implementsInterface(
+            $enumClass,
+            BackedEnum::class,
+            'Expected enum class to implement BackedEnum interface.',
+        );
+
+        $values = array_map(fn (BackedEnum $enum) => $enum->value, $enumClass::cases());
+
+        if (!in_array($value, $values, true)) {
+            static::reportInvalidArgument(
+                sprintf(
+                    $message ?: 'Expected value to be one of %s. Got %s',
+                    implode(', ', $values),
+                    static::typeToString($value),
+                ),
+            );
+        }
+    }
+
+    /**
+     * @param mixed $value
+     * @param callable $callback
+     * @return void
+     */
+    public static function nullOr($value, callable $callback): void
+    {
+        if ($value === null) {
+            return;
+        }
+
+        $callback($value);
+    }
+
+    /**
+     * @param mixed $value
+     * @param array $keys
+     * @param string $message
+     * @return void
+     */
+    public static function keysExists($value, array $keys, string $message = ''): void
+    {
+        self::hasIndices($value, $message);
+
+        foreach ($keys as $key) {
+            try {
+                self::keyExists($value, $key);
+            } catch (InvalidArgumentException $exception) {
+                $normalizer = fn (array $keys) => implode(
+                    ', ',
+                    array_map(
+                        self::valueToString(...),
+                        $keys
+                    )
+                );
+
+                $expected = "[{$normalizer($keys)}]";
+                $actual = "[{$normalizer(array_keys($value))}]";
+
+                static::reportInvalidArgument(
+                    sprintf(
+                        $message ?: 'Expected keys %s to exist. Got: %s',
+                        $expected,
+                        $actual,
+                    ),
+                    $exception
+                );
+            }
+        }
+    }
+
+    /**
+     * @param mixed $value
+     * @param callable $callback
+     * @param string $message
+     * @return void
+     */
+    public static function fulfills($value, callable $callback, string $message = ''): void
+    {
+        $defaultMessage = 'Value does not fulfill the given condition.';
+
+        $previous = null;
+        try {
+            $match = $callback($value);
+        } catch (InvalidArgumentException $exception) {
+            $match = $exception;
+            $previous = $exception;
+        }
+
+        if ($match instanceof InvalidArgumentException) {
+            $defaultMessage .= ' ' . $match->getMessage();
+        }
+
+        if ($match !== true) {
+            static::reportInvalidArgument(
+                $message ?: $defaultMessage,
+                $previous
+            );
+        }
     }
 }

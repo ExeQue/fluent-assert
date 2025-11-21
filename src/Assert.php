@@ -60,7 +60,7 @@ class Assert
     }
 
     /**
-     * @param callable(Assert, string|int): void $callback
+     * @param callable(Assert, string|int): mixed $callback
      */
     public function each(callable $callback, string $message = ''): static
     {
@@ -69,12 +69,37 @@ class Assert
         $this->isIterable($message);
 
         try {
+            $counter = 0;
             foreach ($this->value as $index => $item) {
                 $callback(self::for($item), $index);
+                $counter++;
             }
         } catch (InvalidArgumentException $exception) {
             throw new IndexedInvalidArgumentException(
-                index: $index,
+                index: is_scalar($index) ? $index : $counter,
+                message: $exception->getMessage(),
+                previous: $exception,
+            );
+        }
+
+        return $this;
+    }
+
+    public function eachKey(callable $callback, string $message = ''): static
+    {
+        $this->used = true;
+
+        $this->isIterable($message);
+
+        try {
+            $counter = 0;
+            foreach ($this->value as $index => $item) {
+                $callback(self::for($index), $item);
+                $counter++;
+            }
+        } catch (InvalidArgumentException $exception) {
+            throw new IndexedInvalidArgumentException(
+                index: is_scalar($index) ? $index : $counter,
                 message: $exception->getMessage(),
                 previous: $exception,
             );
@@ -84,7 +109,7 @@ class Assert
     }
 
     /**
-     * @param callable(Assert, string|int|null): void $callback
+     * @param callable(Assert, string|int|null): mixed $callback
      */
     public function at(string|int|callable $index, callable $callback, string $message = ''): static
     {
@@ -119,7 +144,7 @@ class Assert
     }
 
     /**
-     * @param callable(Assert): void[] $callbacks
+     * @param array<callable(Assert): mixed> $callbacks
      */
     public function or(callable ...$callbacks): static
     {
@@ -144,7 +169,7 @@ class Assert
     }
 
     /**
-     * @param callable(Assert): void[] $callbacks
+     * @param array<callable(Assert): mixed> $callbacks
      */
     public function and(callable ...$callbacks): static
     {
@@ -196,6 +221,17 @@ class Assert
         }
 
         throw new InvalidArgumentException($message ?: 'Did not fail expectation.');
+    }
+
+    public function nullOr(callable $callback): static
+    {
+        $this->used = true;
+
+        Base::nullOr($this->value, function () use ($callback) {
+            $callback($this->duplicate());
+        });
+
+        return $this;
     }
 
     public function duplicate(): static
