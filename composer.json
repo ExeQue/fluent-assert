@@ -8,7 +8,7 @@
         "webmozart/assert": "^1.11"
     },
     "require-dev": {
-        "pestphp/pest": "^3.8",
+        "pestphp/pest": "^3.8|^4.0",
         "symfony/console": "^7.2",
         "symfony/var-dumper": "^7.2",
         "laravel/pint": "^1.21",
