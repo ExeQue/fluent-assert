@@ -35,3 +35,12 @@ it('cannot fail at all', function () {
 
     $this->expectNotToPerformAssertions();
 });
+
+it('can be invoked through alias', function() {
+    $assert = Assert::that(['a', 'b', 'c']);
+
+    expect(fn () => $assert->all(
+        fn (Assert $assert) => $assert->minCount(4),
+        fn (Assert $assert) => $assert->maxCount(2),
+    ))->toThrow(BulkInvalidArgumentException::class);
+});

@@ -141,6 +141,14 @@ class Assert
     /**
      * @param array<callable(Assert): mixed> $callbacks
      */
+    public function any(callable ...$callbacks): static
+    {
+        return $this->or(...$callbacks);
+    }
+
+    /**
+     * @param array<callable(Assert): mixed> $callbacks
+     */
     public function and(callable ...$callbacks): static
     {
         $this->used = true;
@@ -158,11 +166,19 @@ class Assert
         if ($exceptions !== []) {
             throw new BulkInvalidArgumentException(
                 $exceptions,
-                ExceptionMessage::for(...$exceptions)->join(', ', ', or '),
+                ExceptionMessage::for(...$exceptions)->join(', ', ', and '),
             );
         }
 
         return $this;
+    }
+
+    /**
+     * @param array<callable(Assert): mixed> $callbacks
+     */
+    public function all(callable ...$callbacks): static
+    {
+        return $this->and(...$callbacks);
     }
 
     public function when(mixed $condition, callable $then, ?callable $otherwise = null): static

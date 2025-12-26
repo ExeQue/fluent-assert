@@ -96,7 +96,7 @@ $assert->and(
     fn (Assert $assert) => $assert->endsWith('bar'),
 );
 // -> ExeQue\FluentAssert\Exceptions\BulkInvalidArgumentException:
-//    Expected a value to start with "foo" (Got: "fizz buzz"), or expected a value to end with "bar" (Got: "fizz buzz").
+//    Expected a value to start with "foo" (Got: "fizz buzz"), and expected a value to end with "bar" (Got: "fizz buzz").
 
 // Using `or()` will only throw an exception if all the assertions fail.
 // The errors will be combined into a single exception.

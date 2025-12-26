@@ -47,3 +47,13 @@ it('throws a bulk exception if all assertions fail', function () {
         expect($exception->getPrevious())->toBe(reset($exceptions));
     });
 });
+
+it('can be invoked through alias', function() {
+    $assert = Assert::that(['a', 'b', 'c']);
+
+    expect(fn () => $assert->any(
+        fn (Assert $assert) => $assert->string(),
+        fn (Assert $assert) => $assert->count(2),
+        fn (Assert $assert) => $assert->integer(),
+    ))->toThrow(BulkInvalidArgumentException::class);
+});
