@@ -7,32 +7,24 @@ use ExeQue\FluentAssert\Exceptions\IndexedInvalidArgumentException;
 use ExeQue\FluentAssert\Exceptions\InvalidArgumentException;
 
 it('calls callback on each element', function () {
-    $assert = Assert::for(['a', 'b', 'c']);
-    $called = 0;
+    $this->expectNotToPerformAssertions();
 
-    $assert->each(
-        function (Assert $item, int $index) use (&$called) {
-            expect($item->value())->toBe(['a', 'b', 'c'][$index]);
-            $called++;
-        },
-    );
+    $assert = Assert::that(['a', 'b', 'c']);
 
-    expect($called)->toBe(3);
+    $assert->each()->oneOf(['a', 'b', 'c']);
 });
 
 it('throws an exception if given a non-iterable', function () {
-    $assert = Assert::for('not iterable');
+    $assert = Assert::that('not iterable');
 
-    expect(fn () => $assert->each(fn () => ''))->toThrow(InvalidArgumentException::class);
+    expect(fn () => $assert->each())->toThrow(InvalidArgumentException::class);
 });
 
 test('exception message starts with index of the first failure', function () {
-    $assert = Assert::for(['a', 'b', 'c']);
+    $assert = Assert::that(['a', 'b', 'c']);
 
     try {
-        $assert->each(
-            fn (Assert $assert) => $assert->eq('a')
-        );
+        $assert->each()->eq('a');
     } catch (InvalidArgumentException $exception) {
         expect($exception->getPrevious())->toBeInstanceOf(InvalidArgumentException::class)
             ->and($exception->getMessage())->toBe('[1]: ' . $exception->getPrevious()?->getMessage());
@@ -40,33 +32,24 @@ test('exception message starts with index of the first failure', function () {
 });
 
 it('can test keys in an iterable', function () {
-    $assert = Assert::for(['a' => 'A', 'b' => 'B', 'c' => 'C']);
+    Assert::that(['a' => 'A', 'b' => 'B', 'c' => 'C'])->keys()->string();
 
-    $assert->eachKey(
-        fn (Assert $key, string $value) => $key->string()
-    );
-
-    $assert = Assert::for([1,2,3,4]);
-
-    $assert->eachKey(
-        fn (Assert $key, int $value) => $key->integer()
-    );
+    Assert::that([1,2,3,4])->keys()->integer();
 
     [$obj1, $obj2] = [new stdClass(), new stdClass()];
     $map = new WeakMap();
     $map[$obj1] = 1;
     $map[$obj2] = 2;
 
-    $assert = Assert::for($map);
+    $assert = Assert::that($map);
 
-    $assert->eachKey(
-        fn (Assert $key, int $value) => $key->isInstanceOf(stdClass::class)
-    );
-    expect(fn () => $assert->eachKey(fn (Assert $key) => $key->string()))->toThrow(function (IndexedInvalidArgumentException $exception) {
+    $assert->keys()->isInstanceOf(stdClass::class);
+
+    expect(fn () => $assert->keys()->string())->toThrow(function (IndexedInvalidArgumentException $exception) {
         expect($exception->getIndex())->toBe(0);
     });
 
-    $assert = Assert::for([1,2,3,4]);
+    $assert = Assert::that([1,2,3,4]);
 
-    expect(fn () => $assert->eachKey(fn (Assert $key) => $key->string()))->toThrow(InvalidArgumentException::class);
+    expect(fn () => $assert->keys()->string())->toThrow(InvalidArgumentException::class);
 });

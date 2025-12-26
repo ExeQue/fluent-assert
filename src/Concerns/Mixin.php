@@ -62,9 +62,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->alnum(...$args)
-        );
+        $this->each()->alnum(...$args);
+
+        return $this;
     }
 
     /**
@@ -78,9 +78,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrAlnum(...$args)
-        );
+        $this->each()->nullOrAlnum(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::alnum ]
@@ -130,9 +130,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->alpha(...$args)
-        );
+        $this->each()->alpha(...$args);
+
+        return $this;
     }
 
     /**
@@ -146,9 +146,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrAlpha(...$args)
-        );
+        $this->each()->nullOrAlpha(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::alpha ]
@@ -201,9 +201,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->arrayContains(...$args)
-        );
+        $this->each()->arrayContains(...$args);
+
+        return $this;
     }
 
     /**
@@ -218,9 +218,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrArrayContains(...$args)
-        );
+        $this->each()->nullOrArrayContains(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::arrayContains ]
@@ -270,9 +270,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->boolean(...$args)
-        );
+        $this->each()->boolean(...$args);
+
+        return $this;
     }
 
     /**
@@ -286,9 +286,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrBoolean(...$args)
-        );
+        $this->each()->nullOrBoolean(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::boolean ]
@@ -338,9 +338,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->classExists(...$args)
-        );
+        $this->each()->classExists(...$args);
+
+        return $this;
     }
 
     /**
@@ -354,9 +354,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrClassExists(...$args)
-        );
+        $this->each()->nullOrClassExists(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::classExists ]
@@ -409,9 +409,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->contains(...$args)
-        );
+        $this->each()->contains(...$args);
+
+        return $this;
     }
 
     /**
@@ -426,9 +426,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrContains(...$args)
-        );
+        $this->each()->nullOrContains(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::contains ]
@@ -481,9 +481,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->count(...$args)
-        );
+        $this->each()->count(...$args);
+
+        return $this;
     }
 
     /**
@@ -498,9 +498,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrCount(...$args)
-        );
+        $this->each()->nullOrCount(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::count ]
@@ -556,9 +556,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->countBetween(...$args)
-        );
+        $this->each()->countBetween(...$args);
+
+        return $this;
     }
 
     /**
@@ -574,9 +574,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrCountBetween(...$args)
-        );
+        $this->each()->nullOrCountBetween(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::countBetween ]
@@ -626,9 +626,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->digits(...$args)
-        );
+        $this->each()->digits(...$args);
+
+        return $this;
     }
 
     /**
@@ -642,9 +642,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrDigits(...$args)
-        );
+        $this->each()->nullOrDigits(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::digits ]
@@ -694,9 +694,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->directory(...$args)
-        );
+        $this->each()->directory(...$args);
+
+        return $this;
     }
 
     /**
@@ -710,9 +710,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrDirectory(...$args)
-        );
+        $this->each()->nullOrDirectory(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::directory ]
@@ -762,9 +762,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->email(...$args)
-        );
+        $this->each()->email(...$args);
+
+        return $this;
     }
 
     /**
@@ -778,9 +778,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrEmail(...$args)
-        );
+        $this->each()->nullOrEmail(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::email ]
@@ -833,9 +833,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->endsWith(...$args)
-        );
+        $this->each()->endsWith(...$args);
+
+        return $this;
     }
 
     /**
@@ -850,9 +850,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrEndsWith(...$args)
-        );
+        $this->each()->nullOrEndsWith(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::endsWith ]
@@ -905,9 +905,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->enumCaseExists(...$args)
-        );
+        $this->each()->enumCaseExists(...$args);
+
+        return $this;
     }
 
     /**
@@ -922,9 +922,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrEnumCaseExists(...$args)
-        );
+        $this->each()->nullOrEnumCaseExists(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::enumCaseExists ]
@@ -977,9 +977,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->enumValueExists(...$args)
-        );
+        $this->each()->enumValueExists(...$args);
+
+        return $this;
     }
 
     /**
@@ -994,9 +994,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrEnumValueExists(...$args)
-        );
+        $this->each()->nullOrEnumValueExists(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::enumValueExists ]
@@ -1049,9 +1049,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->eq(...$args)
-        );
+        $this->each()->eq(...$args);
+
+        return $this;
     }
 
     /**
@@ -1066,9 +1066,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrEq(...$args)
-        );
+        $this->each()->nullOrEq(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::eq ]
@@ -1118,9 +1118,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->false(...$args)
-        );
+        $this->each()->false(...$args);
+
+        return $this;
     }
 
     /**
@@ -1134,9 +1134,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrFalse(...$args)
-        );
+        $this->each()->nullOrFalse(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::false ]
@@ -1186,9 +1186,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->file(...$args)
-        );
+        $this->each()->file(...$args);
+
+        return $this;
     }
 
     /**
@@ -1202,9 +1202,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrFile(...$args)
-        );
+        $this->each()->nullOrFile(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::file ]
@@ -1254,9 +1254,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->fileExists(...$args)
-        );
+        $this->each()->fileExists(...$args);
+
+        return $this;
     }
 
     /**
@@ -1270,9 +1270,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrFileExists(...$args)
-        );
+        $this->each()->nullOrFileExists(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::fileExists ]
@@ -1322,9 +1322,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->float(...$args)
-        );
+        $this->each()->float(...$args);
+
+        return $this;
     }
 
     /**
@@ -1338,9 +1338,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrFloat(...$args)
-        );
+        $this->each()->nullOrFloat(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::float ]
@@ -1393,9 +1393,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->fulfills(...$args)
-        );
+        $this->each()->fulfills(...$args);
+
+        return $this;
     }
 
     /**
@@ -1410,9 +1410,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrFulfills(...$args)
-        );
+        $this->each()->nullOrFulfills(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::fulfills ]
@@ -1465,9 +1465,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->greaterThan(...$args)
-        );
+        $this->each()->greaterThan(...$args);
+
+        return $this;
     }
 
     /**
@@ -1482,9 +1482,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrGreaterThan(...$args)
-        );
+        $this->each()->nullOrGreaterThan(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::greaterThan ]
@@ -1537,9 +1537,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->greaterThanEq(...$args)
-        );
+        $this->each()->greaterThanEq(...$args);
+
+        return $this;
     }
 
     /**
@@ -1554,9 +1554,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrGreaterThanEq(...$args)
-        );
+        $this->each()->nullOrGreaterThanEq(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::greaterThanEq ]
@@ -1606,9 +1606,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->hasIndices(...$args)
-        );
+        $this->each()->hasIndices(...$args);
+
+        return $this;
     }
 
     /**
@@ -1622,9 +1622,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrHasIndices(...$args)
-        );
+        $this->each()->nullOrHasIndices(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::hasIndices ]
@@ -1677,9 +1677,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->implementsInterface(...$args)
-        );
+        $this->each()->implementsInterface(...$args);
+
+        return $this;
     }
 
     /**
@@ -1694,9 +1694,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrImplementsInterface(...$args)
-        );
+        $this->each()->nullOrImplementsInterface(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::implementsInterface ]
@@ -1749,9 +1749,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->inArray(...$args)
-        );
+        $this->each()->inArray(...$args);
+
+        return $this;
     }
 
     /**
@@ -1766,9 +1766,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrInArray(...$args)
-        );
+        $this->each()->nullOrInArray(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::inArray ]
@@ -1821,9 +1821,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->instancedPropertyExists(...$args)
-        );
+        $this->each()->instancedPropertyExists(...$args);
+
+        return $this;
     }
 
     /**
@@ -1838,9 +1838,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrInstancedPropertyExists(...$args)
-        );
+        $this->each()->nullOrInstancedPropertyExists(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::instancedPropertyExists ]
@@ -1890,9 +1890,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->integer(...$args)
-        );
+        $this->each()->integer(...$args);
+
+        return $this;
     }
 
     /**
@@ -1906,9 +1906,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrInteger(...$args)
-        );
+        $this->each()->nullOrInteger(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::integer ]
@@ -1958,9 +1958,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->integerish(...$args)
-        );
+        $this->each()->integerish(...$args);
+
+        return $this;
     }
 
     /**
@@ -1974,9 +1974,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrIntegerish(...$args)
-        );
+        $this->each()->nullOrIntegerish(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::integerish ]
@@ -2026,9 +2026,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->interfaceExists(...$args)
-        );
+        $this->each()->interfaceExists(...$args);
+
+        return $this;
     }
 
     /**
@@ -2042,9 +2042,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrInterfaceExists(...$args)
-        );
+        $this->each()->nullOrInterfaceExists(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::interfaceExists ]
@@ -2094,9 +2094,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->ip(...$args)
-        );
+        $this->each()->ip(...$args);
+
+        return $this;
     }
 
     /**
@@ -2110,9 +2110,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrIp(...$args)
-        );
+        $this->each()->nullOrIp(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::ip ]
@@ -2162,9 +2162,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->ipv4(...$args)
-        );
+        $this->each()->ipv4(...$args);
+
+        return $this;
     }
 
     /**
@@ -2178,9 +2178,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrIpv4(...$args)
-        );
+        $this->each()->nullOrIpv4(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::ipv4 ]
@@ -2230,9 +2230,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->ipv6(...$args)
-        );
+        $this->each()->ipv6(...$args);
+
+        return $this;
     }
 
     /**
@@ -2246,9 +2246,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrIpv6(...$args)
-        );
+        $this->each()->nullOrIpv6(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::ipv6 ]
@@ -2301,9 +2301,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->isAOf(...$args)
-        );
+        $this->each()->isAOf(...$args);
+
+        return $this;
     }
 
     /**
@@ -2318,9 +2318,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrIsAOf(...$args)
-        );
+        $this->each()->nullOrIsAOf(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::isAOf ]
@@ -2373,9 +2373,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->isAnyOf(...$args)
-        );
+        $this->each()->isAnyOf(...$args);
+
+        return $this;
     }
 
     /**
@@ -2390,9 +2390,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrIsAnyOf(...$args)
-        );
+        $this->each()->nullOrIsAnyOf(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::isAnyOf ]
@@ -2442,9 +2442,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->isArray(...$args)
-        );
+        $this->each()->isArray(...$args);
+
+        return $this;
     }
 
     /**
@@ -2458,9 +2458,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrIsArray(...$args)
-        );
+        $this->each()->nullOrIsArray(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::isArray ]
@@ -2510,9 +2510,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->isArrayAccessible(...$args)
-        );
+        $this->each()->isArrayAccessible(...$args);
+
+        return $this;
     }
 
     /**
@@ -2526,9 +2526,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrIsArrayAccessible(...$args)
-        );
+        $this->each()->nullOrIsArrayAccessible(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::isArrayAccessible ]
@@ -2578,9 +2578,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->isCallable(...$args)
-        );
+        $this->each()->isCallable(...$args);
+
+        return $this;
     }
 
     /**
@@ -2594,9 +2594,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrIsCallable(...$args)
-        );
+        $this->each()->nullOrIsCallable(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::isCallable ]
@@ -2646,9 +2646,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->isCountable(...$args)
-        );
+        $this->each()->isCountable(...$args);
+
+        return $this;
     }
 
     /**
@@ -2662,9 +2662,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrIsCountable(...$args)
-        );
+        $this->each()->nullOrIsCountable(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::isCountable ]
@@ -2714,9 +2714,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->isEmpty(...$args)
-        );
+        $this->each()->isEmpty(...$args);
+
+        return $this;
     }
 
     /**
@@ -2730,9 +2730,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrIsEmpty(...$args)
-        );
+        $this->each()->nullOrIsEmpty(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::isEmpty ]
@@ -2785,9 +2785,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->isInstanceOf(...$args)
-        );
+        $this->each()->isInstanceOf(...$args);
+
+        return $this;
     }
 
     /**
@@ -2802,9 +2802,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrIsInstanceOf(...$args)
-        );
+        $this->each()->nullOrIsInstanceOf(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::isInstanceOf ]
@@ -2857,9 +2857,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->isInstanceOfAny(...$args)
-        );
+        $this->each()->isInstanceOfAny(...$args);
+
+        return $this;
     }
 
     /**
@@ -2874,9 +2874,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrIsInstanceOfAny(...$args)
-        );
+        $this->each()->nullOrIsInstanceOfAny(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::isInstanceOfAny ]
@@ -2926,9 +2926,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->isIterable(...$args)
-        );
+        $this->each()->isIterable(...$args);
+
+        return $this;
     }
 
     /**
@@ -2942,9 +2942,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrIsIterable(...$args)
-        );
+        $this->each()->nullOrIsIterable(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::isIterable ]
@@ -2994,9 +2994,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->isList(...$args)
-        );
+        $this->each()->isList(...$args);
+
+        return $this;
     }
 
     /**
@@ -3010,9 +3010,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrIsList(...$args)
-        );
+        $this->each()->nullOrIsList(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::isList ]
@@ -3062,9 +3062,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->isMap(...$args)
-        );
+        $this->each()->isMap(...$args);
+
+        return $this;
     }
 
     /**
@@ -3078,9 +3078,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrIsMap(...$args)
-        );
+        $this->each()->nullOrIsMap(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::isMap ]
@@ -3130,9 +3130,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->isNonEmptyList(...$args)
-        );
+        $this->each()->isNonEmptyList(...$args);
+
+        return $this;
     }
 
     /**
@@ -3146,9 +3146,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrIsNonEmptyList(...$args)
-        );
+        $this->each()->nullOrIsNonEmptyList(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::isNonEmptyList ]
@@ -3198,9 +3198,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->isNonEmptyMap(...$args)
-        );
+        $this->each()->isNonEmptyMap(...$args);
+
+        return $this;
     }
 
     /**
@@ -3214,9 +3214,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrIsNonEmptyMap(...$args)
-        );
+        $this->each()->nullOrIsNonEmptyMap(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::isNonEmptyMap ]
@@ -3269,9 +3269,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->isNotA(...$args)
-        );
+        $this->each()->isNotA(...$args);
+
+        return $this;
     }
 
     /**
@@ -3286,9 +3286,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrIsNotA(...$args)
-        );
+        $this->each()->nullOrIsNotA(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::isNotA ]
@@ -3341,9 +3341,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->keyExists(...$args)
-        );
+        $this->each()->keyExists(...$args);
+
+        return $this;
     }
 
     /**
@@ -3358,9 +3358,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrKeyExists(...$args)
-        );
+        $this->each()->nullOrKeyExists(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::keyExists ]
@@ -3413,9 +3413,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->keyNotExists(...$args)
-        );
+        $this->each()->keyNotExists(...$args);
+
+        return $this;
     }
 
     /**
@@ -3430,9 +3430,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrKeyNotExists(...$args)
-        );
+        $this->each()->nullOrKeyNotExists(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::keyNotExists ]
@@ -3485,9 +3485,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->keysExists(...$args)
-        );
+        $this->each()->keysExists(...$args);
+
+        return $this;
     }
 
     /**
@@ -3502,9 +3502,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrKeysExists(...$args)
-        );
+        $this->each()->nullOrKeysExists(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::keysExists ]
@@ -3557,9 +3557,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->length(...$args)
-        );
+        $this->each()->length(...$args);
+
+        return $this;
     }
 
     /**
@@ -3574,9 +3574,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrLength(...$args)
-        );
+        $this->each()->nullOrLength(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::length ]
@@ -3632,9 +3632,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->lengthBetween(...$args)
-        );
+        $this->each()->lengthBetween(...$args);
+
+        return $this;
     }
 
     /**
@@ -3650,9 +3650,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrLengthBetween(...$args)
-        );
+        $this->each()->nullOrLengthBetween(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::lengthBetween ]
@@ -3705,9 +3705,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->lessThan(...$args)
-        );
+        $this->each()->lessThan(...$args);
+
+        return $this;
     }
 
     /**
@@ -3722,9 +3722,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrLessThan(...$args)
-        );
+        $this->each()->nullOrLessThan(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::lessThan ]
@@ -3777,9 +3777,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->lessThanEq(...$args)
-        );
+        $this->each()->lessThanEq(...$args);
+
+        return $this;
     }
 
     /**
@@ -3794,9 +3794,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrLessThanEq(...$args)
-        );
+        $this->each()->nullOrLessThanEq(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::lessThanEq ]
@@ -3846,9 +3846,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->lower(...$args)
-        );
+        $this->each()->lower(...$args);
+
+        return $this;
     }
 
     /**
@@ -3862,9 +3862,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrLower(...$args)
-        );
+        $this->each()->nullOrLower(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::lower ]
@@ -3917,9 +3917,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->maxCount(...$args)
-        );
+        $this->each()->maxCount(...$args);
+
+        return $this;
     }
 
     /**
@@ -3934,9 +3934,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrMaxCount(...$args)
-        );
+        $this->each()->nullOrMaxCount(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::maxCount ]
@@ -3989,9 +3989,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->maxLength(...$args)
-        );
+        $this->each()->maxLength(...$args);
+
+        return $this;
     }
 
     /**
@@ -4006,9 +4006,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrMaxLength(...$args)
-        );
+        $this->each()->nullOrMaxLength(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::maxLength ]
@@ -4061,9 +4061,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->methodExists(...$args)
-        );
+        $this->each()->methodExists(...$args);
+
+        return $this;
     }
 
     /**
@@ -4078,9 +4078,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrMethodExists(...$args)
-        );
+        $this->each()->nullOrMethodExists(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::methodExists ]
@@ -4133,9 +4133,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->methodNotExists(...$args)
-        );
+        $this->each()->methodNotExists(...$args);
+
+        return $this;
     }
 
     /**
@@ -4150,9 +4150,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrMethodNotExists(...$args)
-        );
+        $this->each()->nullOrMethodNotExists(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::methodNotExists ]
@@ -4205,9 +4205,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->minCount(...$args)
-        );
+        $this->each()->minCount(...$args);
+
+        return $this;
     }
 
     /**
@@ -4222,9 +4222,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrMinCount(...$args)
-        );
+        $this->each()->nullOrMinCount(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::minCount ]
@@ -4277,9 +4277,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->minLength(...$args)
-        );
+        $this->each()->minLength(...$args);
+
+        return $this;
     }
 
     /**
@@ -4294,9 +4294,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrMinLength(...$args)
-        );
+        $this->each()->nullOrMinLength(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::minLength ]
@@ -4346,9 +4346,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->natural(...$args)
-        );
+        $this->each()->natural(...$args);
+
+        return $this;
     }
 
     /**
@@ -4362,9 +4362,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrNatural(...$args)
-        );
+        $this->each()->nullOrNatural(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::natural ]
@@ -4417,9 +4417,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->notContains(...$args)
-        );
+        $this->each()->notContains(...$args);
+
+        return $this;
     }
 
     /**
@@ -4434,9 +4434,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrNotContains(...$args)
-        );
+        $this->each()->nullOrNotContains(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::notContains ]
@@ -4486,9 +4486,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->notEmpty(...$args)
-        );
+        $this->each()->notEmpty(...$args);
+
+        return $this;
     }
 
     /**
@@ -4502,9 +4502,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrNotEmpty(...$args)
-        );
+        $this->each()->nullOrNotEmpty(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::notEmpty ]
@@ -4557,9 +4557,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->notEndsWith(...$args)
-        );
+        $this->each()->notEndsWith(...$args);
+
+        return $this;
     }
 
     /**
@@ -4574,9 +4574,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrNotEndsWith(...$args)
-        );
+        $this->each()->nullOrNotEndsWith(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::notEndsWith ]
@@ -4629,9 +4629,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->notEq(...$args)
-        );
+        $this->each()->notEq(...$args);
+
+        return $this;
     }
 
     /**
@@ -4646,9 +4646,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrNotEq(...$args)
-        );
+        $this->each()->nullOrNotEq(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::notEq ]
@@ -4698,9 +4698,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->notFalse(...$args)
-        );
+        $this->each()->notFalse(...$args);
+
+        return $this;
     }
 
     /**
@@ -4714,9 +4714,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrNotFalse(...$args)
-        );
+        $this->each()->nullOrNotFalse(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::notFalse ]
@@ -4769,9 +4769,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->notInstanceOf(...$args)
-        );
+        $this->each()->notInstanceOf(...$args);
+
+        return $this;
     }
 
     /**
@@ -4786,9 +4786,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrNotInstanceOf(...$args)
-        );
+        $this->each()->nullOrNotInstanceOf(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::notInstanceOf ]
@@ -4838,9 +4838,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->notNull(...$args)
-        );
+        $this->each()->notNull(...$args);
+
+        return $this;
     }
 
     /**
@@ -4854,9 +4854,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrNotNull(...$args)
-        );
+        $this->each()->nullOrNotNull(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::notNull ]
@@ -4909,9 +4909,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->notRegex(...$args)
-        );
+        $this->each()->notRegex(...$args);
+
+        return $this;
     }
 
     /**
@@ -4926,9 +4926,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrNotRegex(...$args)
-        );
+        $this->each()->nullOrNotRegex(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::notRegex ]
@@ -4981,9 +4981,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->notSame(...$args)
-        );
+        $this->each()->notSame(...$args);
+
+        return $this;
     }
 
     /**
@@ -4998,9 +4998,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrNotSame(...$args)
-        );
+        $this->each()->nullOrNotSame(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::notSame ]
@@ -5053,9 +5053,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->notStartsWith(...$args)
-        );
+        $this->each()->notStartsWith(...$args);
+
+        return $this;
     }
 
     /**
@@ -5070,9 +5070,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrNotStartsWith(...$args)
-        );
+        $this->each()->nullOrNotStartsWith(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::notStartsWith ]
@@ -5122,9 +5122,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->notWhitespaceOnly(...$args)
-        );
+        $this->each()->notWhitespaceOnly(...$args);
+
+        return $this;
     }
 
     /**
@@ -5138,9 +5138,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrNotWhitespaceOnly(...$args)
-        );
+        $this->each()->nullOrNotWhitespaceOnly(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::notWhitespaceOnly ]
@@ -5172,9 +5172,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->null(...$args)
-        );
+        $this->each()->null(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::null ]
@@ -5224,9 +5224,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->numeric(...$args)
-        );
+        $this->each()->numeric(...$args);
+
+        return $this;
     }
 
     /**
@@ -5240,9 +5240,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrNumeric(...$args)
-        );
+        $this->each()->nullOrNumeric(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::numeric ]
@@ -5292,9 +5292,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->object(...$args)
-        );
+        $this->each()->object(...$args);
+
+        return $this;
     }
 
     /**
@@ -5308,9 +5308,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrObject(...$args)
-        );
+        $this->each()->nullOrObject(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::object ]
@@ -5363,9 +5363,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->oneOf(...$args)
-        );
+        $this->each()->oneOf(...$args);
+
+        return $this;
     }
 
     /**
@@ -5380,9 +5380,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrOneOf(...$args)
-        );
+        $this->each()->nullOrOneOf(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::oneOf ]
@@ -5432,9 +5432,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->positiveInteger(...$args)
-        );
+        $this->each()->positiveInteger(...$args);
+
+        return $this;
     }
 
     /**
@@ -5448,9 +5448,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrPositiveInteger(...$args)
-        );
+        $this->each()->nullOrPositiveInteger(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::positiveInteger ]
@@ -5503,9 +5503,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->privatePropertyExists(...$args)
-        );
+        $this->each()->privatePropertyExists(...$args);
+
+        return $this;
     }
 
     /**
@@ -5520,9 +5520,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrPrivatePropertyExists(...$args)
-        );
+        $this->each()->nullOrPrivatePropertyExists(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::privatePropertyExists ]
@@ -5575,9 +5575,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->propertyExists(...$args)
-        );
+        $this->each()->propertyExists(...$args);
+
+        return $this;
     }
 
     /**
@@ -5592,9 +5592,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrPropertyExists(...$args)
-        );
+        $this->each()->nullOrPropertyExists(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::propertyExists ]
@@ -5647,9 +5647,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->propertyNotExists(...$args)
-        );
+        $this->each()->propertyNotExists(...$args);
+
+        return $this;
     }
 
     /**
@@ -5664,9 +5664,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrPropertyNotExists(...$args)
-        );
+        $this->each()->nullOrPropertyNotExists(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::propertyNotExists ]
@@ -5719,9 +5719,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->protectedPropertyExists(...$args)
-        );
+        $this->each()->protectedPropertyExists(...$args);
+
+        return $this;
     }
 
     /**
@@ -5736,9 +5736,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrProtectedPropertyExists(...$args)
-        );
+        $this->each()->nullOrProtectedPropertyExists(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::protectedPropertyExists ]
@@ -5791,9 +5791,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->publicPropertyExists(...$args)
-        );
+        $this->each()->publicPropertyExists(...$args);
+
+        return $this;
     }
 
     /**
@@ -5808,9 +5808,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrPublicPropertyExists(...$args)
-        );
+        $this->each()->nullOrPublicPropertyExists(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::publicPropertyExists ]
@@ -5866,9 +5866,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->range(...$args)
-        );
+        $this->each()->range(...$args);
+
+        return $this;
     }
 
     /**
@@ -5884,9 +5884,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrRange(...$args)
-        );
+        $this->each()->nullOrRange(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::range ]
@@ -5936,9 +5936,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->readable(...$args)
-        );
+        $this->each()->readable(...$args);
+
+        return $this;
     }
 
     /**
@@ -5952,9 +5952,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrReadable(...$args)
-        );
+        $this->each()->nullOrReadable(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::readable ]
@@ -6007,9 +6007,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->regex(...$args)
-        );
+        $this->each()->regex(...$args);
+
+        return $this;
     }
 
     /**
@@ -6024,9 +6024,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrRegex(...$args)
-        );
+        $this->each()->nullOrRegex(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::regex ]
@@ -6079,9 +6079,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->resource(...$args)
-        );
+        $this->each()->resource(...$args);
+
+        return $this;
     }
 
     /**
@@ -6096,9 +6096,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrResource(...$args)
-        );
+        $this->each()->nullOrResource(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::resource ]
@@ -6151,9 +6151,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->same(...$args)
-        );
+        $this->each()->same(...$args);
+
+        return $this;
     }
 
     /**
@@ -6168,9 +6168,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrSame(...$args)
-        );
+        $this->each()->nullOrSame(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::same ]
@@ -6220,9 +6220,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->scalar(...$args)
-        );
+        $this->each()->scalar(...$args);
+
+        return $this;
     }
 
     /**
@@ -6236,9 +6236,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrScalar(...$args)
-        );
+        $this->each()->nullOrScalar(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::scalar ]
@@ -6291,9 +6291,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->startsWith(...$args)
-        );
+        $this->each()->startsWith(...$args);
+
+        return $this;
     }
 
     /**
@@ -6308,9 +6308,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrStartsWith(...$args)
-        );
+        $this->each()->nullOrStartsWith(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::startsWith ]
@@ -6360,9 +6360,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->startsWithLetter(...$args)
-        );
+        $this->each()->startsWithLetter(...$args);
+
+        return $this;
     }
 
     /**
@@ -6376,9 +6376,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrStartsWithLetter(...$args)
-        );
+        $this->each()->nullOrStartsWithLetter(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::startsWithLetter ]
@@ -6431,9 +6431,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->staticPropertyExists(...$args)
-        );
+        $this->each()->staticPropertyExists(...$args);
+
+        return $this;
     }
 
     /**
@@ -6448,9 +6448,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrStaticPropertyExists(...$args)
-        );
+        $this->each()->nullOrStaticPropertyExists(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::staticPropertyExists ]
@@ -6500,9 +6500,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->string(...$args)
-        );
+        $this->each()->string(...$args);
+
+        return $this;
     }
 
     /**
@@ -6516,9 +6516,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrString(...$args)
-        );
+        $this->each()->nullOrString(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::string ]
@@ -6568,9 +6568,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->stringNotEmpty(...$args)
-        );
+        $this->each()->stringNotEmpty(...$args);
+
+        return $this;
     }
 
     /**
@@ -6584,9 +6584,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrStringNotEmpty(...$args)
-        );
+        $this->each()->nullOrStringNotEmpty(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::stringNotEmpty ]
@@ -6639,9 +6639,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->subclassOf(...$args)
-        );
+        $this->each()->subclassOf(...$args);
+
+        return $this;
     }
 
     /**
@@ -6656,9 +6656,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrSubclassOf(...$args)
-        );
+        $this->each()->nullOrSubclassOf(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::subclassOf ]
@@ -6711,9 +6711,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->throws(...$args)
-        );
+        $this->each()->throws(...$args);
+
+        return $this;
     }
 
     /**
@@ -6728,9 +6728,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrThrows(...$args)
-        );
+        $this->each()->nullOrThrows(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::throws ]
@@ -6780,9 +6780,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->true(...$args)
-        );
+        $this->each()->true(...$args);
+
+        return $this;
     }
 
     /**
@@ -6796,9 +6796,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrTrue(...$args)
-        );
+        $this->each()->nullOrTrue(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::true ]
@@ -6851,9 +6851,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->type(...$args)
-        );
+        $this->each()->type(...$args);
+
+        return $this;
     }
 
     /**
@@ -6868,9 +6868,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrType(...$args)
-        );
+        $this->each()->nullOrType(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::type ]
@@ -6920,9 +6920,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->unicodeLetters(...$args)
-        );
+        $this->each()->unicodeLetters(...$args);
+
+        return $this;
     }
 
     /**
@@ -6936,9 +6936,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrUnicodeLetters(...$args)
-        );
+        $this->each()->nullOrUnicodeLetters(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::unicodeLetters ]
@@ -6988,9 +6988,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->uniqueValues(...$args)
-        );
+        $this->each()->uniqueValues(...$args);
+
+        return $this;
     }
 
     /**
@@ -7004,9 +7004,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrUniqueValues(...$args)
-        );
+        $this->each()->nullOrUniqueValues(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::uniqueValues ]
@@ -7056,9 +7056,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->upper(...$args)
-        );
+        $this->each()->upper(...$args);
+
+        return $this;
     }
 
     /**
@@ -7072,9 +7072,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrUpper(...$args)
-        );
+        $this->each()->nullOrUpper(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::upper ]
@@ -7124,9 +7124,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->uuid(...$args)
-        );
+        $this->each()->uuid(...$args);
+
+        return $this;
     }
 
     /**
@@ -7140,9 +7140,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrUuid(...$args)
-        );
+        $this->each()->nullOrUuid(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::uuid ]
@@ -7192,9 +7192,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->validArrayKey(...$args)
-        );
+        $this->each()->validArrayKey(...$args);
+
+        return $this;
     }
 
     /**
@@ -7208,9 +7208,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrValidArrayKey(...$args)
-        );
+        $this->each()->nullOrValidArrayKey(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::validArrayKey ]
@@ -7260,9 +7260,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->writable(...$args)
-        );
+        $this->each()->writable(...$args);
+
+        return $this;
     }
 
     /**
@@ -7276,9 +7276,9 @@ trait Mixin
 
         $args = func_get_args();
 
-        return $this->each(
-            fn (self $assert) => $assert->nullOrWritable(...$args)
-        );
+        $this->each()->nullOrWritable(...$args);
+
+        return $this;
     }
 
     // endregion [ Base::writable ]

@@ -266,9 +266,9 @@ PHP;
 
                 \$args = func_get_args();
 
-                return \$this->each(
-                    fn (self \$assert) => \$assert->$name(...\$args)
-                );
+                \$this->each()->$name(...\$args);
+
+                return \$this;
             }
         PHP;
 
@@ -288,9 +288,9 @@ PHP;
 
                 \$args = func_get_args();
 
-                return \$this->each(
-                    fn (self \$assert) => \$assert->$nullname(...\$args)
-                );
+                \$this->each()->$nullname(...\$args);
+
+                return \$this;
             }
         PHP;
 

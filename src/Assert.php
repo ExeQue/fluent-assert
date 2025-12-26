@@ -10,8 +10,11 @@ use ExeQue\FluentAssert\Concerns\Mixin;
 use ExeQue\FluentAssert\Exceptions\BulkInvalidArgumentException;
 use ExeQue\FluentAssert\Exceptions\IndexedInvalidArgumentException;
 use ExeQue\FluentAssert\Exceptions\InvalidArgumentException;
+use ExeQue\FluentAssert\Proxies\Each;
+use ExeQue\FluentAssert\Proxies\Not;
 use ExeQue\FluentAssert\Resolvers\Condition;
 use ExeQue\FluentAssert\Resolvers\ExceptionMessage;
+use ExeQue\FluentAssert\Support\KeyIterator;
 
 /**
  * @template TValue of mixed
@@ -35,6 +38,8 @@ class Assert
      * @param TValue $value
      *
      * @return self<TValue>
+     *
+     * @deprecated Use Assert::that() instead.
      */
     public static function for(mixed $value): static
     {
@@ -59,53 +64,18 @@ class Assert
         return $this->value;
     }
 
-    /**
-     * @param callable(Assert, string|int): mixed $callback
-     */
-    public function each(callable $callback, string $message = ''): static
+    public function each(string $message = ''): Each
     {
         $this->used = true;
 
-        $this->isIterable($message);
-
-        try {
-            $counter = 0;
-            foreach ($this->value as $index => $item) {
-                $callback(self::for($item), $index);
-                $counter++;
-            }
-        } catch (InvalidArgumentException $exception) {
-            throw new IndexedInvalidArgumentException(
-                index: is_scalar($index) ? $index : $counter,
-                message: $exception->getMessage(),
-                previous: $exception,
-            );
-        }
-
-        return $this;
+        return new Each($this->duplicate(), $message);
     }
 
-    public function eachKey(callable $callback, string $message = ''): static
+    public function keys(string $message = ''): Each
     {
         $this->used = true;
 
-        $this->isIterable($message);
-
-        try {
-            $counter = 0;
-            foreach ($this->value as $index => $item) {
-                $callback(self::for($index), $item);
-                $counter++;
-            }
-        } catch (InvalidArgumentException $exception) {
-            throw new IndexedInvalidArgumentException(
-                index: is_scalar($index) ? $index : $counter,
-                message: $exception->getMessage(),
-                previous: $exception,
-            );
-        }
-
-        return $this;
+        return new Each(self::that(new KeyIterator($this->value)), $message);
     }
 
     /**
@@ -210,17 +180,11 @@ class Assert
         return $this;
     }
 
-    public function not(callable $callback, string $message = ''): static
+    public function not(string $message = ''): Not
     {
         $this->used = true;
 
-        try {
-            $callback($this->duplicate());
-        } catch (InvalidArgumentException) {
-            return $this;
-        }
-
-        throw new InvalidArgumentException($message ?: 'Did not fail expectation.');
+        return new Not($this->duplicate(), $message);
     }
 
     public function nullOr(callable $callback): static
