@@ -48,7 +48,7 @@ it('throws a bulk exception if all assertions fail', function () {
     });
 });
 
-it('can be invoked through alias', function() {
+it('can be invoked through alias', function () {
     $assert = Assert::that(['a', 'b', 'c']);
 
     expect(fn () => $assert->any(

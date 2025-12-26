@@ -7,19 +7,16 @@ namespace ExeQue\FluentAssert\Proxies;
 use ExeQue\FluentAssert\Assert;
 use ExeQue\FluentAssert\Exceptions\IndexedInvalidArgumentException;
 use ExeQue\FluentAssert\Exceptions\InvalidArgumentException;
-use ExeQue\FluentAssert\Proxies\Concerns\ActsOnIterables;
 
 class Each extends Proxy
 {
-    use ActsOnIterables;
-
     public function __construct(
         Assert $assert,
         string $message = ''
     ) {
         parent::__construct($assert);
 
-        $this->isIterable($this->assert, $message);
+        $this->assert->isIterable($message);
     }
 
     public function __call(string $name, array $arguments): static

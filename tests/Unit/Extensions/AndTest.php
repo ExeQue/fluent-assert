@@ -36,7 +36,7 @@ it('cannot fail at all', function () {
     $this->expectNotToPerformAssertions();
 });
 
-it('can be invoked through alias', function() {
+it('can be invoked through alias', function () {
     $assert = Assert::that(['a', 'b', 'c']);
 
     expect(fn () => $assert->all(

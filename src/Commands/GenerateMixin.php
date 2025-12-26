@@ -84,6 +84,7 @@ use BackedEnum;
  *
  * @extends Assert
  * @codeCoverageIgnore
+ * @internal
  */
 trait {$className}
 {

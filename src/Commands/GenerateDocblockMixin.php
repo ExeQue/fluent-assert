@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace ExeQue\FluentAssert\Commands;
 
 use ExeQue\FluentAssert\Assert;
+use ExeQue\FluentAssert\Base;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionParameter;
@@ -64,11 +65,16 @@ class GenerateDocblockMixin extends Command
     private function buildDocblock(): void
     {
         $reflector = new ReflectionClass(Assert::class);
+        $baseReflector = new ReflectionClass(Base::class);
 
         $methods = $reflector->getMethods(ReflectionMethod::IS_STATIC | ReflectionMethod::IS_PUBLIC);
 
-        $methods = array_filter($methods, static function (ReflectionMethod $method) {
+        $methods = array_filter($methods, static function (ReflectionMethod $method) use ($baseReflector) {
             $name = $method->getName();
+
+            if ($baseReflector->hasMethod($method->name) === false) {
+                return false;
+            }
 
             if ($method->isPublic() === false) {
                 return false;
@@ -118,7 +124,9 @@ namespace ExeQue\\FluentAssert\\Concerns;
 /**
  * This file is auto-generated. Do not edit it manually.
  *
-{$methodsBlock} */
+{$methodsBlock} *
+ * @internal
+ */
 trait DocblockMixin
 {
 }
