@@ -7,7 +7,7 @@ use ExeQue\FluentAssert\Exceptions\BulkInvalidArgumentException;
 use ExeQue\FluentAssert\Exceptions\InvalidArgumentException;
 
 it('stops at the first non-failure', function () {
-    $assert = Assert::for(['a', 'b', 'c']);
+    $assert = Assert::that(['a', 'b', 'c']);
 
     $assert->or(
         fn (Assert $assert) => $assert->count(3),
@@ -18,7 +18,7 @@ it('stops at the first non-failure', function () {
 });
 
 it('does not stop at the first failure if non-failure exists', function () {
-    $assert = Assert::for(['a', 'b', 'c']);
+    $assert = Assert::that(['a', 'b', 'c']);
 
     $assert->or(
         fn (Assert $assert) => $assert->string(),
@@ -29,7 +29,7 @@ it('does not stop at the first failure if non-failure exists', function () {
 });
 
 it('throws a bulk exception if all assertions fail', function () {
-    $assert = Assert::for(['a', 'b', 'c']);
+    $assert = Assert::that(['a', 'b', 'c']);
 
     expect(fn () => $assert->or(
         fn (Assert $assert) => $assert->string(),

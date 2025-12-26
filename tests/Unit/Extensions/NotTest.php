@@ -6,19 +6,15 @@ use ExeQue\FluentAssert\Assert;
 use ExeQue\FluentAssert\Exceptions\InvalidArgumentException;
 
 it('fails if assertion does not', function () {
-    $assert = Assert::for(['a', 'b', 'c']);
+    $assert = Assert::that(['a', 'b', 'c']);
 
-    expect(fn () => $assert->not(
-        fn (Assert $assert) => $assert->arrayContains('b'),
-    ))->toThrow(InvalidArgumentException::class);
+    expect(fn () => $assert->not()->arrayContains('b'))->toThrow(InvalidArgumentException::class);
 });
 
 it('passes if assertion does not', function () {
     $this->expectNotToPerformAssertions();
 
-    $assert = Assert::for(['a', 'b', 'c']);
+    $assert = Assert::that(['a', 'b', 'c']);
 
-    $assert->not(
-        fn (Assert $assert) => $assert->arrayContains('d'),
-    );
+    $assert->not()->arrayContains('d');
 });

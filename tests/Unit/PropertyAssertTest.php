@@ -6,7 +6,7 @@ use ExeQue\FluentAssert\Assert;
 use ExeQue\FluentAssert\Exceptions\InvalidArgumentException;
 
 it('checks if public property exists', function () {
-    $assert = Assert::for(
+    $assert = Assert::that(
         new class () {
             public string $foo = 'Foo';
             public static string $bar = 'Bar';
@@ -21,7 +21,7 @@ it('checks if public property exists', function () {
 });
 
 it('checks if private property exists', function () {
-    $assert = Assert::for(
+    $assert = Assert::that(
         new class () {
             public string $foo = 'Foo';
             public static string $bar = 'Bar';
@@ -35,7 +35,7 @@ it('checks if private property exists', function () {
 });
 
 it('checks if protected property exists', function () {
-    $assert = Assert::for(
+    $assert = Assert::that(
         new class () {
             public string $foo = 'Foo';
             public static string $bar = 'Bar';
@@ -49,7 +49,7 @@ it('checks if protected property exists', function () {
 });
 
 it('checks if static property exists', function () {
-    $assert = Assert::for(
+    $assert = Assert::that(
         new class () {
             public string $foo = 'Foo';
             public static string $bar = 'Bar';
@@ -63,7 +63,7 @@ it('checks if static property exists', function () {
 });
 
 it('checks if instanced property exists', function () {
-    $assert = Assert::for(
+    $assert = Assert::that(
         new class () {
             public string $foo = 'Foo';
             public static string $bar = 'Bar';

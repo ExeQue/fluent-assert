@@ -4,7 +4,7 @@ use ExeQue\FluentAssert\Assert;
 use ExeQue\FluentAssert\Base;
 
 it('covers method in base asserter', function (string $method) {
-    $assert = Assert::for('foo');
+    $assert = Assert::that('foo');
 
     $nodefault = 'NODEFAULT' . random_bytes(32);
 

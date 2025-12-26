@@ -7,7 +7,7 @@ use ExeQue\FluentAssert\Exceptions\IndexedInvalidArgumentException;
 use ExeQue\FluentAssert\Exceptions\InvalidArgumentException;
 
 it('calls callback on the element at index', function () {
-    $assert = Assert::for(['a', 'b', 'c']);
+    $assert = Assert::that(['a', 'b', 'c']);
     $called = 0;
 
     $assert->at(1, function (Assert $item, int $index) use (&$called) {
@@ -20,12 +20,12 @@ it('calls callback on the element at index', function () {
 });
 
 it('fails if the index does not exist', function () {
-    $assert = Assert::for(['a', 'b', 'c']);
+    $assert = Assert::that(['a', 'b', 'c']);
 
     expect(fn () => $assert->at(2, fn () => ''))->not->toThrow(InvalidArgumentException::class)
         ->and(fn () => $assert->at(3, fn () => ''))->toThrow(InvalidArgumentException::class);
 
-    $assert = Assert::for(['a' => 'a', 'b' => 'b', 'c' => 'c']);
+    $assert = Assert::that(['a' => 'a', 'b' => 'b', 'c' => 'c']);
     expect(fn () => $assert->at('c', fn () => ''))->not->toThrow(InvalidArgumentException::class)
         ->and(fn () => $assert->at('d', fn () => ''))->toThrow(InvalidArgumentException::class);
 });
@@ -37,7 +37,7 @@ it('can use a callable to extract the value to assert on', function () {
         random_bytes(8),
     ];
 
-    $assert = Assert::for($items);
+    $assert = Assert::that($items);
 
     $assert->at(
         fn (array $input) => $input[1],
@@ -50,7 +50,7 @@ it('can reference object properties', function () {
         public string $name = 'John Doe';
     };
 
-    $assert = Assert::for($object);
+    $assert = Assert::that($object);
 
     $assert->at('name', function (Assert $item, string $key) use ($object) {
         expect($item->value())->toBe($object->name)->and($key)->toBe('name');
@@ -61,14 +61,14 @@ it('can reference object properties', function () {
             private string $name = 'John Doe';
         };
 
-        $assert = Assert::for($object);
+        $assert = Assert::that($object);
 
         $assert->at('name', fn () => '');
     })->toThrow(InvalidArgumentException::class);
 });
 
 it('does not report index when the key does not exist', function () {
-    $assert = Assert::for([
+    $assert = Assert::that([
         'foo' => 'bar',
     ]);
 
@@ -78,7 +78,7 @@ it('does not report index when the key does not exist', function () {
 });
 
 it('throws an indexed invalid argument when the callback fails', function () {
-    $assert = Assert::for(['a', 'b', 'c']);
+    $assert = Assert::that(['a', 'b', 'c']);
 
     expect(fn () => $assert->at(1, fn () => throw new InvalidArgumentException('Test')))
         ->toThrow(function (IndexedInvalidArgumentException $exception) {

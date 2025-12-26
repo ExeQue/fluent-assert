@@ -6,7 +6,7 @@ use ExeQue\FluentAssert\Assert;
 use Tests\Support\AssertableCallable;
 
 it('can use any value for condition', function () {
-    $assert = Assert::for(['a', 'b', 'c']);
+    $assert = Assert::that(['a', 'b', 'c']);
 
     $truthfulConditions = [
         true,
@@ -46,7 +46,7 @@ it('can use any value for condition', function () {
 });
 
 it('can accept callables as condition', function () {
-    $assert = Assert::for(['a', 'b', 'c']);
+    $assert = Assert::that(['a', 'b', 'c']);
 
     $truthfulConditions = [
         fn () => true,
@@ -87,7 +87,7 @@ it('can accept callables as condition', function () {
 });
 
 it('runs callback if callback condition returns used non-failed assert', function () {
-    $assert = Assert::for(['a', 'b', 'c']);
+    $assert = Assert::that(['a', 'b', 'c']);
 
     $assert->when(
         function (Assert $assert) {
@@ -98,7 +98,7 @@ it('runs callback if callback condition returns used non-failed assert', functio
 });
 
 it('runs callback if callback condition returns null', function () {
-    $assert = Assert::for(['a', 'b', 'c']);
+    $assert = Assert::that(['a', 'b', 'c']);
 
     $assert->when(
         function (Assert $assert) {
@@ -111,7 +111,7 @@ it('runs callback if callback condition returns null', function () {
 });
 
 it('will not run callback if callback condition returns falsy value', function () {
-    $assert = Assert::for(['a', 'b', 'c']);
+    $assert = Assert::that(['a', 'b', 'c']);
 
     $assert->when(
         function (Assert $assert) {
@@ -124,7 +124,7 @@ it('will not run callback if callback condition returns falsy value', function (
 });
 
 it('will not run callback if callback condition fails assertion', function () {
-    $assert = Assert::for(['a', 'b', 'c']);
+    $assert = Assert::that(['a', 'b', 'c']);
 
     $assert->when(
         fn (Assert $assert) => $assert->count(1),
@@ -133,7 +133,7 @@ it('will not run callback if callback condition fails assertion', function () {
 });
 
 it('will not run callback if callback condition returns unused assert', function () {
-    $assert = Assert::for(['a', 'b', 'c']);
+    $assert = Assert::that(['a', 'b', 'c']);
 
     $assert->when(
         function (Assert $conditionAssert) {
@@ -144,7 +144,7 @@ it('will not run callback if callback condition returns unused assert', function
 });
 
 it('calls otherwise if condition is falsy', function () {
-    $assert = Assert::for(['a', 'b', 'c']);
+    $assert = Assert::that(['a', 'b', 'c']);
 
     $assert->when(
         false,

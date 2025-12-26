@@ -10,7 +10,7 @@ use Tests\Fixtures\SampleUnitEnum;
 use Tests\Fixtures\SecondEnum;
 
 it('checks if the given value is a valid enum case', function (string $enumClass) {
-    $assert = Assert::for('First');
+    $assert = Assert::that('First');
 
     $assert->enumCaseExists($enumClass);
 
@@ -28,7 +28,7 @@ it('checks if the given value is a valid enum case', function (string $enumClass
 ]);
 
 it('checks if the given valid is a valid enum value', function (mixed $input, string $enumClass) {
-    $assert = Assert::for($input);
+    $assert = Assert::that($input);
 
     $assert->enumValueExists($enumClass);
 
@@ -45,7 +45,7 @@ it('checks if the given valid is a valid enum value', function (mixed $input, st
 ]);
 
 it('cannot test for values on a non-backed enum', function () {
-    expect(fn () => Assert::for('foo')->enumValueExists(SampleUnitEnum::class))
+    expect(fn () => Assert::that('foo')->enumValueExists(SampleUnitEnum::class))
         ->toThrow(
             InvalidArgumentException::class,
             'Expected enum class to implement BackedEnum interface.'
@@ -53,7 +53,7 @@ it('cannot test for values on a non-backed enum', function () {
 });
 
 it('cannot test for cases on a non-enum', function () {
-    expect(fn () => Assert::for('foo')->enumCaseExists(stdClass::class))
+    expect(fn () => Assert::that('foo')->enumCaseExists(stdClass::class))
         ->toThrow(
             InvalidArgumentException::class,
             'Expected enum class to implement UnitEnum interface.'
@@ -61,7 +61,7 @@ it('cannot test for cases on a non-enum', function () {
 });
 
 it('cannot test for values on a non-enum', function () {
-    expect(fn () => Assert::for('foo')->enumValueExists(stdClass::class))
+    expect(fn () => Assert::that('foo')->enumValueExists(stdClass::class))
         ->toThrow(
             InvalidArgumentException::class,
             'Expected enum class to implement BackedEnum interface.'

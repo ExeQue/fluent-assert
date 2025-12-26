@@ -6,7 +6,7 @@ use ExeQue\FluentAssert\Assert;
 use ExeQue\FluentAssert\Exceptions\BulkInvalidArgumentException;
 
 it('does not stop at first failure', function () {
-    $assert = Assert::for(['a', 'b', 'c']);
+    $assert = Assert::that(['a', 'b', 'c']);
 
     expect(fn () => $assert->and(
         fn (Assert $assert) => $assert->minCount(4),
@@ -25,7 +25,7 @@ it('does not stop at first failure', function () {
 });
 
 it('cannot fail at all', function () {
-    $assert = Assert::for(['a', 'b', 'c']);
+    $assert = Assert::that(['a', 'b', 'c']);
 
     $assert->and(
         fn (Assert $assert) => $assert->minCount(3),

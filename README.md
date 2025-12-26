@@ -125,13 +125,9 @@ use ExeQue\FluentAssert\Assert;
 
 $assert = Assert::that(['foo', 'bar', 'baz']);
 
-$assert->each(
-    fn (Assert $assert) => $assert->string()->length(3)
-);
+$assert->each()->string()->length(3);
 
-$assert->each(
-    fn (Assert $assert) => $assert->inArray(['foo', 'bar'])
-);
+$assert->each()->inArray(['foo', 'bar']);
 // -> ExeQue\FluentAssert\Exceptions\IndexedInvalidArgumentException:
 //    [2]: Expected one of: "foo", "bar". Got: "baz"
 ```
@@ -231,10 +227,7 @@ use ExeQue\FluentAssert\Assert;
 
 $assert = Assert::that([1, 2, 3, 4]);
 
-$assert->not(
-    fn (Assert $assert) => $assert->arrayContains(3),
-    'Input cannot contain the number 3'
-);
+$assert->not('Input cannot contain the number 3')->arrayContains(3);
 ```
 
 ## Assertions

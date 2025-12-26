@@ -8,7 +8,7 @@ use PHPUnit\Framework\ExpectationFailedException;
 it('stops if the value is null', function () {
     $this->expectNotToPerformAssertions();
 
-    $assert = Assert::for(null);
+    $assert = Assert::that(null);
 
     $assert->nullOr(function () {
         throw new ExpectationFailedException(
@@ -18,7 +18,7 @@ it('stops if the value is null', function () {
 });
 
 it('calls the callback if the value is not null', function () {
-    $assert = Assert::for('value');
+    $assert = Assert::that('value');
 
     $assert->nullOr(function (Assert $assert) {
         expect($assert->value())->toBe('value');

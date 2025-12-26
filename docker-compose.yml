@@ -13,3 +13,7 @@ services:
       - .:/var/www/html
       - ~/.cache/composer:/.composer/cache
     entrypoint: [ "composer" ]
+  console:
+    extends:
+      service: php
+    entrypoint: [ "php", "/var/www/html/bin/console" ]

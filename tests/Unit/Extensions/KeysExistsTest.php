@@ -11,7 +11,7 @@ it('can assert if keys exist in an array', function () {
         'city' => 'Wonderland',
     ];
 
-    Assert::for($array)
+    Assert::that($array)
         ->keysExists(
             [
                 'name',
@@ -30,7 +30,7 @@ it('can assert partial keys exist in an array', function () {
         'city' => 'Wonderland',
     ];
 
-    Assert::for($array)
+    Assert::that($array)
         ->keysExists(
             [
                 'name',
@@ -48,7 +48,7 @@ it('fails if any key does not exist in an array', function () {
         'city' => 'Wonderland',
     ];
 
-    expect(fn () => Assert::for($array)->keysExists(
+    expect(fn () => Assert::that($array)->keysExists(
         [
             'name',
             'country',
@@ -63,7 +63,7 @@ it('can assert keys in ArrayAccess object', function () {
         'city' => 'Wonderland',
     ]);
 
-    Assert::for($array)
+    Assert::that($array)
         ->keysExists(
             [
                 'name',
