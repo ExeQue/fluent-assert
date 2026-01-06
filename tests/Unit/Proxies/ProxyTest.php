@@ -57,9 +57,6 @@ describe(Each::class, function () {
 
             expect(1)->toBe(1);
         } catch (Throwable $exception) {
-            if ($exception instanceof BadMethodCallException) {
-                dd($exception);
-            }
             expect($exception)->not->toBeInstanceOf(BadMethodCallException::class);
         }
     })->with('assert methods');
