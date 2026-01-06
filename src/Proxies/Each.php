@@ -10,20 +10,24 @@ use ExeQue\FluentAssert\Exceptions\InvalidArgumentException;
 
 class Each extends Proxy
 {
+    private iterable $values;
+
     public function __construct(
-        Assert $assert,
+        private Assert $base,
         string $message = ''
     ) {
-        parent::__construct($assert);
+        $this->base->isIterable($message);
 
-        $this->assert->isIterable($message);
+        $this->values = $this->base->value();
     }
 
     public function __call(string $name, array $arguments): static
     {
+        $this->ensureAssertMethodIsCovered($name);
+
         try {
             $counter = 0;
-            foreach ($this->value() as $index => $item) {
+            foreach ($this->values as $index => $item) {
                 Assert::that($item)->{$name}(...$arguments);
                 $counter++;
             }
@@ -36,5 +40,10 @@ class Each extends Proxy
         }
 
         return $this;
+    }
+
+    public function back(): Assert
+    {
+        return $this->base;
     }
 }

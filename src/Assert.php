@@ -40,6 +40,7 @@ class Assert
      * @return self<TValue>
      *
      * @deprecated Use Assert::that() instead.
+     * @codeCoverageIgnore
      */
     public static function for(mixed $value): static
     {
@@ -68,7 +69,34 @@ class Assert
     {
         $this->used = true;
 
+        $this->isIterable($message);
+
         return new Each($this->duplicate(), $message);
+    }
+
+    /**
+     * @param callable(self $value, array-key $key): mixed $callback
+     * @return $this
+     */
+    public function forEach(callable $callback): static
+    {
+        $this->used = true;
+
+        $this->isIterable();
+
+        foreach ($this->value as $key => $item) {
+            try {
+                $callback(self::that($item), $key);
+            } catch (InvalidArgumentException $exception) {
+                throw new IndexedInvalidArgumentException(
+                    index: $key,
+                    message: $exception->getMessage(),
+                    previous: $exception,
+                );
+            }
+        }
+
+        return $this;
     }
 
     public function keys(string $message = ''): Each
@@ -79,7 +107,34 @@ class Assert
     }
 
     /**
-     * @param callable(Assert, string|int|null): mixed $callback
+     * @param callable(self $keys, int $index): mixed $callback
+     * @return $this
+     */
+    public function forKeys(callable $callback): static
+    {
+        $this->used = true;
+
+        $this->isIterable();
+
+        $iterator = new KeyIterator($this->value);
+
+        foreach ($iterator as $index => $key) {
+            try {
+                $callback(self::that($key), $index);
+            } catch (InvalidArgumentException $exception) {
+                throw new IndexedInvalidArgumentException(
+                    index: $key,
+                    message: $exception->getMessage(),
+                    previous: $exception,
+                );
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param callable(Assert, array-key|null): mixed $callback
      */
     public function at(string|int|callable $index, callable $callback, string $message = ''): static
     {
@@ -95,9 +150,9 @@ class Assert
                 $value = $this->value->{$index};
             }
 
-            $assert = self::for($value);
+            $assert = self::that($value);
         } else {
-            $assert = self::for($index($this->value));
+            $assert = self::that($index($this->value));
             $usingCallable = true;
         }
         try {
@@ -108,6 +163,24 @@ class Assert
                 message: $exception->getMessage(),
                 previous: $exception,
             );
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param array<callable(Assert, array-key|null): mixed> $map
+     * @param string $message
+     * @return $this
+     */
+    public function atMany(array $map, string $message = ''): static
+    {
+        $this->used = true;
+
+        Base::allIsCallable($map);
+
+        foreach ($map as $index => $callback) {
+            $this->at($index, $callback, $message);
         }
 
         return $this;

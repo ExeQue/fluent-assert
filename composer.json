@@ -49,11 +49,12 @@
         "lint": "vendor/bin/pint -p",
         "build": [
             "@php bin/console generate:mixin",
-            "@php bin/console generate:docblock-mixin"
+            "@php bin/console generate:docblock-mixin",
+            "@composer lint"
         ],
         "pre-commit": [
-            "@composer test",
             "@composer build",
+            "@composer test",
             "@composer lint"
         ]
     }

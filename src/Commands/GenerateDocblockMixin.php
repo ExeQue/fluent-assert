@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace ExeQue\FluentAssert\Commands;
 
 use ExeQue\FluentAssert\Assert;
-use ExeQue\FluentAssert\Base;
+use ExeQue\FluentAssert\Proxies\Proxy;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionParameter;
@@ -65,18 +65,13 @@ class GenerateDocblockMixin extends Command
     private function buildDocblock(): void
     {
         $reflector = new ReflectionClass(Assert::class);
-        $baseReflector = new ReflectionClass(Base::class);
 
         $methods = $reflector->getMethods(ReflectionMethod::IS_STATIC | ReflectionMethod::IS_PUBLIC);
 
-        $methods = array_filter($methods, static function (ReflectionMethod $method) use ($baseReflector) {
+        $methods = array_filter($methods, static function (ReflectionMethod $method) {
             $name = $method->getName();
 
-            if ($baseReflector->hasMethod($method->name) === false) {
-                return false;
-            }
-
-            if ($method->isPublic() === false) {
+            if ($method->isPrivate() || $method->isProtected()) {
                 return false;
             }
 
@@ -99,6 +94,27 @@ class GenerateDocblockMixin extends Command
                 return false;
             }
 
+            // Skip methods that return Proxy types
+            if ($return = $method->getReturnType()) {
+                if ($return instanceof ReflectionNamedType) {
+                    $types = [$return];
+                } else {
+                    $types = $return->getTypes();
+                }
+
+                $valid = true;
+                foreach ($types as $type) {
+                    if ($type->getName() !== 'static') {
+                        $valid = false;
+                        break;
+                    }
+                }
+
+                if ($valid === false) {
+                    return false;
+                }
+            }
+
             return true;
         });
 
@@ -114,12 +130,16 @@ class GenerateDocblockMixin extends Command
             $methodsBlock .= " * @method {$return} {$method->getName()}({$params})\n";
         }
 
+        $methodNames = json_encode(array_map(fn (ReflectionMethod $m) => $m->getName(), $methods));
+
         $this->output = <<<PHP
 <?php
 
 declare(strict_types=1);
 
 namespace ExeQue\\FluentAssert\\Concerns;
+
+use BadMethodCallException;
 
 /**
  * This file is auto-generated. Do not edit it manually.
@@ -129,6 +149,21 @@ namespace ExeQue\\FluentAssert\\Concerns;
  */
 trait DocblockMixin
 {
+    protected array \$coveredMethods = {$methodNames};
+
+    protected function assertMethodIsCovered(string \$name): bool
+    {
+        return in_array(\$name, \$this->coveredMethods, true);
+    }
+
+    protected function ensureAssertMethodIsCovered(string \$name): void
+    {
+        \$class = static::class;
+
+        if (!\$this->assertMethodIsCovered(\$name)) {
+            throw new BadMethodCallException("Call to undefined method \$class::\$name()");
+        }
+    }
 }
 
 PHP;

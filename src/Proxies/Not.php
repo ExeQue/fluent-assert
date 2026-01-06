@@ -10,14 +10,15 @@ use ExeQue\FluentAssert\Exceptions\InvalidArgumentException;
 class Not extends Proxy
 {
     public function __construct(
-        Assert $assert,
+        private Assert $assert,
         private string $message = ''
     ) {
-        parent::__construct($assert);
     }
 
     public function __call(string $name, array $arguments): static
     {
+        $this->ensureAssertMethodIsCovered($name);
+
         try {
             $this->assert->{$name}(...$arguments);
         } catch (InvalidArgumentException) {
@@ -25,5 +26,10 @@ class Not extends Proxy
         }
 
         throw new InvalidArgumentException($this->message ?: 'Did not fail expectation.');
+    }
+
+    public function back(): Assert
+    {
+        return $this->assert;
     }
 }

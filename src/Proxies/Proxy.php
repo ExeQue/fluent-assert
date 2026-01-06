@@ -11,15 +11,7 @@ abstract class Proxy
 {
     use DocblockMixin;
 
-    public function __construct(
-        protected Assert $assert,
-    ) {
-    }
-
     abstract public function __call(string $name, array $arguments): static;
 
-    final public function value(): mixed
-    {
-        return $this->assert->value();
-    }
+    abstract public function back(): Assert;
 }

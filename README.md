@@ -89,16 +89,22 @@ use ExeQue\FluentAssert\Assert;
 
 $assert = Assert::that('fizz buzz');
 
-// Using `and()` will throw an exception if any of the assertions fail.
+// Using `and()`/`all()` will throw an exception if any of the assertions fail.
 // The errors will be combined into a single exception.
 $assert->and(
     fn (Assert $assert) => $assert->startsWith('foo'),
     fn (Assert $assert) => $assert->endsWith('bar'),
 );
+
+$assert->all(
+    fn (Assert $assert) => $assert->startsWith('foo'),
+    fn (Assert $assert) => $assert->endsWith('bar'),
+);
+
 // -> ExeQue\FluentAssert\Exceptions\BulkInvalidArgumentException:
 //    Expected a value to start with "foo" (Got: "fizz buzz"), and expected a value to end with "bar" (Got: "fizz buzz").
 
-// Using `or()` will only throw an exception if all the assertions fail.
+// Using `or()`/`any()` will only throw an exception if all the assertions fail.
 // The errors will be combined into a single exception.
 $assert->or(
     fn (Assert $assert) => $assert->startsWith('foo'),
@@ -106,7 +112,7 @@ $assert->or(
 ):
 // -> Does not fail
 
-$assert->or(
+$assert->any(
     fn (Assert $assert) => $assert->startsWith('foo'),
     fn (Assert $assert) => $assert->startsWith('bar'),
 ):
@@ -116,7 +122,7 @@ $assert->or(
 
 ### Iterative Assertions
 
-The `each()` method allows you to iterate over an array or an `ArrayAccess` object and apply assertions to each value.
+The `each()` method allows you to iterate over an iterable and apply assertions to each value.
 
 The errors thrown will have a prefix of failing index applied.
 
@@ -130,16 +136,26 @@ $assert->each()->string()->length(3);
 $assert->each()->inArray(['foo', 'bar']);
 // -> ExeQue\FluentAssert\Exceptions\IndexedInvalidArgumentException:
 //    [2]: Expected one of: "foo", "bar". Got: "baz"
+
+$assert->forEach(
+    fn(Assert $value, string|int $index) => $value->string()->length(3),
+);
+
+$assert->forEach(
+    fn(Assert $value, string|int $index) => $value->inArray(['foo', 'bar']),
+);
+// -> ExeQue\FluentAssert\Exceptions\IndexedInvalidArgumentException:
+//    [2]: Expected one of: "foo", "bar". Got: "baz"
 ```
 
 The `IndexedInvalidArgumentException` can provide the index that failed use `getIndex()` and the original message using
 `getOriginalMessage()`.
 
-An alternative version `eachKey` is available to apply assertions to the keys of an iterable.
+Alternative versions `keys`/`forKeys` is available to apply assertions to the keys of an iterable.
 
 ### Positional Assertions
 
-The `at()` method allows you to assert a value at a specific index in an array or an `ArrayAccess` object.
+The `at()`/`atMany()` methods allows you to assert a value at a specific index in an array, an `ArrayAccess` instance, or a properties of an object.
 
 It automatically calls `keyExists()` on the index before applying the assertion.
 
@@ -160,6 +176,24 @@ $assert = Assert::that(['foo' => 'bar']);
 $assert->at('foo', fn (Assert $assert) => $assert->eq('fizz'));
 // -> ExeQue\FluentAssert\Exceptions\IndexedInvalidArgumentException:
 //    [foo]: Expected a value equal to "fizz". Got: "bar"
+
+// Multiple positional assertions can be made using `atMany()`
+$assert = Assert::that(['foo', 'bar', 'baz']);
+$assert->atMany([
+    0 => fn (Assert $assert) => $assert->eq('foo'),
+    1 => fn (Assert $assert) => $assert->eq('fizz'),
+    2 => fn (Assert $assert) => $assert->eq('baz'),
+]);
+// -> ExeQue\FluentAssert\Exceptions\IndexedInvalidArgumentException:
+//    [1]: Expected a value equal to "fizz". Got: "bar"
+
+$assert = Assert::that(['foo' => 'bar', 'baz' => 'qux']);
+$assert->atMany([
+    'foo' => fn (Assert $assert) => $assert->eq('bar'),
+    'baz' => fn (Assert $assert) => $assert->eq('quux'),
+]);
+// -> ExeQue\FluentAssert\Exceptions\IndexedInvalidArgumentException:
+//    [baz]: Expected a value equal to "quux". Got: "qux
 ```
 
 ### Conditional Assertions
