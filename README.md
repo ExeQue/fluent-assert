@@ -247,10 +247,10 @@ $assert->when(
     fn(Assert $assert) => null, // Is not called
     fn(Assert $assert) => null, // Is called
 );
-
-
-
 ```
+
+Alternative conditions exist as well:
+ - `whenAt()` - Combines `when()` with `at()` - An assertion of the value at the index is provided for the `$then` callback
 
 ### Inverted Assertions
 

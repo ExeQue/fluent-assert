@@ -68,6 +68,18 @@ describe('at()', function () {
         })->toThrow(InvalidArgumentException::class);
     });
 
+    it('can reference static object properties', function () {
+        $object = new class () {
+            public static string $name = 'John Doe';
+        };
+
+        $assert = Assert::that($object);
+
+        $assert->at('name', function (Assert $item, string $key) use ($object) {
+            expect($item->value())->toBe($object::$name)->and($key)->toBe('name');
+        });
+    });
+
     it('does not report index when the key does not exist', function () {
         $assert = Assert::that([
             'foo' => 'bar',

@@ -6,6 +6,10 @@ namespace ExeQue\FluentAssert\Concerns;
 
 use BadMethodCallException;
 
+/**
+ * @internal
+ * @codeCoverageIgnore
+ */
 trait Macroable
 {
     private static array $macros = [];
@@ -25,6 +29,8 @@ trait Macroable
             return $callback->bindTo($this)(...$arguments) ?? $this;
         }
 
-        throw new BadMethodCallException("Method {$name} does not exist.");
+        $class = static::class;
+
+        throw new BadMethodCallException("Call to undefined method $class::$name()");
     }
 }

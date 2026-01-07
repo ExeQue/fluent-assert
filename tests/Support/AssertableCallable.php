@@ -15,22 +15,22 @@ class AssertableCallable
 
     private mixed $return = null;
 
-    private ?array $args = null;
+    private ?array $args     = null;
+    private bool   $expected = true;
 
     private function __construct(
-        private readonly bool $expected = false,
         private readonly string $message = '',
     ) {
     }
 
     public static function shouldNotBeCalled(string $message = ''): static
     {
-        return new static(false, $message);
+        return self::shouldBeCalled(message: $message)->never();
     }
 
     public static function shouldBeCalled(?callable $callback = null, string $message = ''): static
     {
-        $callable = new static(true, $message);
+        $callable = new static($message);
 
         if ($callback !== null) {
             $callable->using($callback);
@@ -50,7 +50,21 @@ class AssertableCallable
     {
         $this->expectedExecutions = $times;
 
+        if ($times <= 0) {
+            $this->expected = false;
+        }
+
         return $this;
+    }
+
+    public function never(): static
+    {
+        return $this->times(0);
+    }
+
+    public function once(): static
+    {
+        return $this->times(1);
     }
 
     public function seeing(array ...$args): static
@@ -64,15 +78,13 @@ class AssertableCallable
 
     public function __invoke(): mixed
     {
-        $args = func_get_args();
-
         $this->executed = true;
         $this->executions++;
 
         if ($this->args !== null) {
             $expectedArgs = $this->args[$this->executions - 1] ?? null;
 
-            expect($args)->toEqual(
+            expect(func_get_args())->toEqual(
                 $expectedArgs,
                 'Callable was called with unexpected arguments.',
             );

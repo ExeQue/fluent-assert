@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace ExeQue\FluentAssert;
 
 use ArrayAccess;
+use ExeQue\FluentAssert\Concerns\Conditions;
 use ExeQue\FluentAssert\Concerns\Macroable;
 use ExeQue\FluentAssert\Concerns\Mixin;
 use ExeQue\FluentAssert\Exceptions\BulkInvalidArgumentException;
@@ -12,9 +13,9 @@ use ExeQue\FluentAssert\Exceptions\IndexedInvalidArgumentException;
 use ExeQue\FluentAssert\Exceptions\InvalidArgumentException;
 use ExeQue\FluentAssert\Proxies\Each;
 use ExeQue\FluentAssert\Proxies\Not;
-use ExeQue\FluentAssert\Resolvers\Condition;
 use ExeQue\FluentAssert\Resolvers\ExceptionMessage;
 use ExeQue\FluentAssert\Support\KeyIterator;
+use ReflectionProperty;
 
 /**
  * @template TValue of mixed
@@ -23,6 +24,7 @@ class Assert
 {
     use Mixin;
     use Macroable;
+    use Conditions;
 
     protected bool $used = false;
 
@@ -147,7 +149,10 @@ class Assert
                 $value = $this->value[$index];
             } else {
                 $this->publicPropertyExists($index, $message);
-                $value = $this->value->{$index};
+
+                $property = new ReflectionProperty($this->value(), $index);
+
+                $value = $property->getValue($this->value());
             }
 
             $assert = self::that($value);
@@ -252,21 +257,6 @@ class Assert
     public function all(callable ...$callbacks): static
     {
         return $this->and(...$callbacks);
-    }
-
-    public function when(mixed $condition, callable $then, ?callable $otherwise = null): static
-    {
-        $this->used = true;
-
-        $condition = Condition::for($condition, $this);
-
-        if ($condition->eval() !== false) {
-            $then($this->duplicate());
-        } elseif ($otherwise !== null) {
-            $otherwise($this->duplicate());
-        }
-
-        return $this;
     }
 
     public function not(string $message = ''): Not
