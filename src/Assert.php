@@ -277,6 +277,13 @@ class Assert
         return $this;
     }
 
+    public function through(callable $callback): static
+    {
+        $callback($this);
+
+        return $this;
+    }
+
     public function duplicate(): static
     {
         return new static($this->value);
