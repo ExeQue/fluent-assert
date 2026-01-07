@@ -229,3 +229,12 @@ describe('whenAt()', function () {
         $assert->whenAt('public', $then);
     });
 });
+
+
+it('does not throw an error if key does not exists and no otherwise is given', function () {
+    $assert = Assert::that(['a' => 'b']);
+
+    $callback = AssertableCallable::shouldNotBeCalled();
+
+    $assert->whenAt('c', $callback);
+});

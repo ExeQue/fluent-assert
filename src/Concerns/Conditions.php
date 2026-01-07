@@ -34,6 +34,8 @@ trait Conditions
      */
     public function whenAt(string|int $key, callable $then, ?callable $otherwise = null): static
     {
+        $otherwise ??= static fn () => null;
+
         return $this->when(
             fn (Assert $assert) => $assert->any(
                 fn (Assert $assert) => $assert->hasIndices()->keyExists($key),
